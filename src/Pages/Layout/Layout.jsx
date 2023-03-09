@@ -17,6 +17,7 @@ const Layout = () => {
             <li>
               <a href="/">Home</a>
             </li>
+            <li><a href="/ListProduct">All Products</a></li>
             {!user ? (
               <>
                 <li>
@@ -27,7 +28,10 @@ const Layout = () => {
                 </li>
               </>
             ) : (
+              <>
               <li onClick={handleClick}>Logout</li>
+              <li><a href="/Profile">Profile</a></li>
+              </>
             )}
           </ul>
         </nav>

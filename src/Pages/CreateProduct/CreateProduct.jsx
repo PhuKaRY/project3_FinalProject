@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import Confetti from "react-confetti";
 import myApi from "../../service/service";
@@ -51,6 +52,7 @@ const CreateProduct = () => {
       </form>
     </div>
   );
+
 };
 
 export default CreateProduct;
