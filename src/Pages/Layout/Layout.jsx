@@ -4,9 +4,9 @@ import { Outlet } from "react-router-dom";
 const Layout = () => {
   return (
     <>
-    <header>
+    <header style={{width:'100vw'}}>
         <nav>
-            <ul>
+            <ul style={{display: 'flex', justifyContent:'space-evenly'}}>
                 <li><a href="/">Home</a></li>
                 <li><a href="/signup">Signup</a></li>
                 <li><a href="login">Login</a></li>
