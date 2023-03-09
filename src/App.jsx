@@ -9,7 +9,7 @@ import Profile from "./Pages/Profile/Profile";
 import Product from "./Pages/ProductPage/Product";
 // import Payment from "./Pages/PaymentPage/payment";
 // import CreateProduct from "./Pages/CreateProduct/CreateProduct";
-
+import CreateProduct from "./Pages/CreateProduct/CreateProduct";
 // import ShowAllMessage from "./Pages/CreateMessage/ShowAllMessage";
 // import ShowOneMessage from "./Pages/CreateMessage/SHowOneMessage";
 // import Basket from "./Pages/BasketPage/Basket";
@@ -31,6 +31,7 @@ function App() {
           <Route path="/ListProduct" element={<ListProduct />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/Product/:id" element={<Product />} />
+          <Route path='/CreateProduct' element={<CreateProduct />} />
           {/*<Route path="/Payment" element={<Payment />} />
           <Route path="/ShowAllMessage" element={<ShowAllMessage />} />
           <Route path="/ShowOneMessage" element={<ShowOneMessage />} />
