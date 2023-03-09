@@ -5,12 +5,12 @@ export const AuthContext = createContext();
 
 function AuthContextWrapper(props) {
   const [user, setUser] = useState(null);
-  const [token, setToken] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  //   const [token, setToken] = useState(null);
+  //   const [isLoading, setIsLoading] = useState(true);
 
   function storeToken(receivedToken) {
     localStorage.setItem("token", receivedToken);
-    setToken(receivedToken);
+    // setToken(receivedToken);
   }
 
   function getToken() {
@@ -22,25 +22,21 @@ function AuthContextWrapper(props) {
   }
 
   async function authenticateUser() {
-    const currentToken = getToken();
-    setToken(currentToken);
     try {
-      const response = await myApi.get("/auth/user", {
-        headers: {
-          Authorization: `Bearer ${currentToken}`,
-        },
-      });
-      if (response.status === 200) {
-        setUser(response.data);
-        setIsLoading(false);
-      } else {
+      const currentToken = getToken();
+      //   setToken(currentToken);
+      if (!currentToken) {
         setUser(null);
-        setIsLoading(false);
+        return;
       }
+      const response = await myApi.get("/auth/user");
+      console.log(response);
+      setUser(response.data);
+      // setIsLoading(false);
     } catch (error) {
       console.log(error.response.data);
       setUser(null);
-      setIsLoading(false);
+      //   setIsLoading(false);
     }
   }
 

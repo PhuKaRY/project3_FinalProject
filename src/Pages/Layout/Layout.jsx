@@ -8,7 +8,7 @@ const Layout = () => {
     removeToken();
     authenticateUser();
   };
-  console.log(user);
+  // console.log(user);
   return (
     <>
       <header style={{ width: "100vw" }}>
@@ -34,7 +34,6 @@ const Layout = () => {
       </header>
       <Outlet />
     </>
-    // <div>Layout</div>
   );
 };
 

@@ -10,4 +10,18 @@ const myApi = axios.create({
   baseURL: BACKEND_URL,
 });
 
+myApi.interceptors.request.use(
+  (config) => {
+    if (localStorage.getItem("token")) {
+      config.headers["Authorization"] = `Bearer ${localStorage.getItem(
+        "token"
+      )}`;
+    }
+    return config;
+  },
+  function (error) {
+    console.error(error);
+  }
+);
+
 export default myApi;
