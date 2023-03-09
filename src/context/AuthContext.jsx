@@ -5,6 +5,7 @@ export const AuthContext = createContext();
 
 function AuthContextWrapper(props) {
   const [user, setUser] = useState(null);
+  // console.log(user);
   //   const [token, setToken] = useState(null);
   //   const [isLoading, setIsLoading] = useState(true);
 
@@ -30,7 +31,7 @@ function AuthContextWrapper(props) {
         return;
       }
       const response = await myApi.get("/auth/user");
-      console.log(response);
+      //   console.log(response);
       setUser(response.data);
       // setIsLoading(false);
     } catch (error) {
