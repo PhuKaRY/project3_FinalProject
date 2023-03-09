@@ -3,7 +3,6 @@ import "./App.css";
 import Layout from "./Pages/Layout/Layout";
 import Signup from "./Pages/Signup/Signup";
 import Login from "./Pages/Login/Login";
-import Logout from "./Pages/Logout/Logout";
 // import Profile from "./Pages/Profile/Profile";
 // import Product from "./Pages/ProductPage/Product";
 // import Payment from "./Pages/PaymentPage/payment";
@@ -26,12 +25,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/Signup" element={<Signup />} />
           <Route path="/Login" element={<Login />} />
-          <Route path="/Logout" element={<Logout />} />
           {/* <Route path="/Profile" element={<Profile />} />
           <Route path="/Product" element={<Product />} />
           <Route path="/Payment" element={<Payment />} />
           <Route path="/ListProduct" element={<ListProduct />} />
-          <Route path="/Layout" element={<Layout />} />
           <Route path="/CreateProduct" element={<CreateProduct />} />
           <Route path="/ShowAllMessage" element={<ShowAllMessage />} />
           <Route path="/ShowOneMessage" element={<ShowOneMessage />} />
