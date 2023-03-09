@@ -1,3 +1,4 @@
+
 import React, { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import CreateProduct from "../CreateProduct/CreateProduct";
@@ -14,6 +15,7 @@ const Profile = () => {
       <CreateProduct />
     </div>
   );
+
 };
 
 export default Profile;
