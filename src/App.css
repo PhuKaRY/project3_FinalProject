@@ -1,7 +1,7 @@
 #root {
   text-align: center;
 }
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -40,4 +40,10 @@
 
 .read-the-docs {
   color: #888;
+}
+.App {
+  margin-top: 2%;
+}
+.body {
+  background-image: url("./pictures/bike.jpg");
 }
