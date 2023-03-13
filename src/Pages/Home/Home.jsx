@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ListProduct from "../../components/ListProduct";
 import myApi from "../../service/service";
+import Vdbr from "../../video/vdbr.mp4";
 
 const Home = () => {
   const [products, setProducts] = useState(null);
@@ -48,6 +49,11 @@ const Home = () => {
 
   return (
     <div>
+      <div className="videobg">
+        <video autoPlay loop muted>
+          <source src={Vdbr} type="video/mp4" />
+        </video>
+      </div>
       <h1>Name of the website</h1>
       <div>button/field for the query</div>
       <div>
@@ -57,7 +63,6 @@ const Home = () => {
           deleteBtn={false}
         />
       </div>
-
       {/* get one product */}
       <div>
         <input
