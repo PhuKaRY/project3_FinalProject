@@ -49,7 +49,7 @@ const Profile = () => {
             <button onClick={()=> setShowFormCP(true)}>Create A Product</button>
           :
             <>
-            <button onClick={()=> setShowFormCP(false)}>Unshow</button>
+            <button onClick={()=> setShowFormCP(false)}>Hide</button>
             <CreateProduct getProducts={getProducts} setShow={setShowFormCP}/>
             </>
         }
@@ -58,7 +58,7 @@ const Profile = () => {
             <button onClick={()=> setShowProducts(true)}>Your Products</button>
           :
             <>
-            <button onClick={()=> setShowProducts(false)}>Unshow</button>
+            <button onClick={()=> setShowProducts(false)}>Hide</button>
             <ListProduct products={products} deleteBtn={true} getProducts={getProducts} getMessages={getMessages}/>
             </>
         }
@@ -68,7 +68,7 @@ const Profile = () => {
             <button onClick={()=> setShowMessages(true)}>Your Messages</button>
           :
             <>
-            <button onClick={()=> setShowMessages(false)}>Unshow</button>
+            <button onClick={()=> setShowMessages(false)}>Hide</button>
             <ListMessages messages={messages} getMessages={getMessages}/>
             </>
         }

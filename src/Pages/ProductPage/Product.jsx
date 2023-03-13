@@ -31,6 +31,11 @@ const Product = () => {
         .catch((error)=> console.log(error))
   }
 
+  const handleSend= ()=> {
+    setShowFormCM(false);
+    getMessages();
+  }
+
   useEffect(()=> {
         getProduct();
         getMessages();
@@ -52,7 +57,7 @@ const Product = () => {
           :
             <>
             <button onClick={()=> setShowFormCM(false)}>Unshow</button>
-            <CreateMessage respond={false} productId={id} callback={setShowFormCM}/>
+            <CreateMessage respond={false} productId={id} callback={handleSend}/>
             </>)
         }
         <ListMessages messages={messages} getMessages={getMessages}/>

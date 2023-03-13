@@ -18,7 +18,7 @@ const CreateMessage = ({productId, respond, callback}) => {
                 sendTo: product.data.seller
             }
             const res= await myApi.post('/messages', send);
-            callback(false);
+            callback();
         }
         else {
             let to='';
