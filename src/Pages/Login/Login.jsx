@@ -17,7 +17,7 @@ const Login = () => {
       const response = await myApi.post("/auth/login", userToLogin);
       storeToken(response.data.token);
       await authenticateUser();
-      navigate("/");
+      navigate("/Profile");
     } catch (error) {
       console.error(error.response.data.message);
       setError(error.response.data.message);

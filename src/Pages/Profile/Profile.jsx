@@ -2,48 +2,77 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import myApi from "../../service/service";
-import CreateProduct from "../CreateProduct/CreateProduct";
-import { Link, useNavigate } from "react-router-dom";
+import CreateProduct from "../../components/CreateProduct";
+import CreateMessage from "../../components/CreateMessage";
+import ListProduct from "../../components/ListProduct";
+import ListMessages from "../../components/ListMessages";
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
+
   const [products, setProducts] = useState(null);
-  const navigate= useNavigate();
-  // const [refresh, setRefresh] = useState(0);
-  //   console.log(user);
+  const [messages, setMessages] = useState(null);
+
+  const [showFormCP, setShowFormCP] = useState(false);
+  const [showProducts, setShowProducts] = useState(false);
+  const [showMessages, setShowMessages] = useState(false);
+
   const getProducts = async () => {
-    myApi.get('/products/user')
+    myApi.get(`/products/user/${user._id}`)
     .then((res)=> setProducts(res.data))
       .catch((error) => console.log(error))
   }
+  const getMessages = async () => {
+    myApi.get('/messages')
+    .then((res)=> setMessages(res.data))
+      .catch((error) => console.log(error))
+  }
   useEffect(()=> {
-    getProducts();
-  }, [])
-  const handleDelete= async (id) => {
-    myApi.delete(`/products/${id}`)
-    .then((res) => console.log(products))
-    // .then((res) => getProducts())
-    .then((res) => navigate('/Profile'))
-    .catch((error) => console.log(error))
+    if(user){
+      getProducts();
+      getMessages();
+    }
+  }, [user])
+  if (!user) {
+    return <p>loading user</p>;
   }
-  console.log(user, products)
-  if (!user || !products) {
-    return <p>loading</p>;
+  if (!products) {
+    return <p>loading products</p>;
   }
+  if (!messages) {
+    return <p>loading messages</p>;
+  }
+  // console.log(messages)
   return (
     <div>
       <h1>Profile of {user.username}</h1>
-      <Link to={'/CreateProduct'}>Create A Product</Link>
+        {!showFormCP?
+            <button onClick={()=> setShowFormCP(true)}>Create A Product</button>
+          :
+            <>
+            <button onClick={()=> setShowFormCP(false)}>Unshow</button>
+            <CreateProduct getProducts={getProducts} setShow={setShowFormCP}/>
+            </>
+        }
       <div>
-      {products.map((product)=> {
-        return <Link to={`/Product/${product._id}`} key={product._id}>
-        <div style={{border:"1px solid black"}}>
-        <h3>{product.name}</h3>
-        <p>${product.price}</p>
-        <button onClick={()=>handleDelete(product._id)}>Delete</button>
-        </div>
-        </Link>
-      })}
+        {!showProducts?
+            <button onClick={()=> setShowProducts(true)}>Your Products</button>
+          :
+            <>
+            <button onClick={()=> setShowProducts(false)}>Unshow</button>
+            <ListProduct products={products} deleteBtn={true} getProducts={getProducts} getMessages={getMessages}/>
+            </>
+        }
+      </div>
+      <div>
+        {!showMessages?
+            <button onClick={()=> setShowMessages(true)}>Your Messages</button>
+          :
+            <>
+            <button onClick={()=> setShowMessages(false)}>Unshow</button>
+            <ListMessages messages={messages} getMessages={getMessages}/>
+            </>
+        }
       </div>
     </div>
   );

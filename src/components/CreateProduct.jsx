@@ -1,21 +1,19 @@
 
 import React, { useState } from "react";
 import Confetti from "react-confetti";
-import myApi from "../../service/service";
-import { useNavigate } from "react-router-dom";
+import myApi from "../service/service";
 
-const CreateProduct = () => {
+const CreateProduct = ({getProducts, setShow}) => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [category, setCategory] = useState(-1);
-  const [showConfetti, setShowconfetti] = useState("");
-  const navigate = useNavigate();
-  const handleSubmit = async (e) => {
+  
+  const handleSubmit = (e) => {
     e.preventDefault();
     const producCreate = { name, price, category };
-    const res = await myApi.post("/products", producCreate);
-    console.log(res);
-    navigate("/Profile");
+    myApi.post("/products", producCreate)
+    .then((res)=> {setShow(false);getProducts()})
+    .catch((error) => console.log(error))
   };
 
   return (
@@ -48,7 +46,6 @@ const CreateProduct = () => {
           <option value="other">Other</option>
         </select>
         <button>Create</button>
-        {showConfetti && <Confetti recycle={false} />}
       </form>
     </div>
   );

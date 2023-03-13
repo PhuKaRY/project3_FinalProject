@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
 const Layout = () => {
   const { user, authenticateUser, removeToken } = useContext(AuthContext);
+  const navigate= useNavigate();
   const handleClick = () => {
     removeToken();
     authenticateUser();
+    navigate('/login');
   };
   // console.log(user);
   return (
@@ -17,7 +19,6 @@ const Layout = () => {
             <li>
               <a href="/">Home</a>
             </li>
-            <li><a href="/ListProduct">All Products</a></li>
             {!user ? (
               <>
                 <li>
