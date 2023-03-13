@@ -22,6 +22,7 @@ const ListProduct = ({products, deleteBtn, getProducts, getMessages}) => {
       return <div key={product._id}>
         <Link to={`/Product/${product._id}`} key={product._id}>
         <div style={{border:"1px solid black"}}>
+        <img src={product.picture} alt={product.name} />
         <h3>{product.name}</h3>
         <p>${product.price}</p>
         </div>

@@ -42,6 +42,7 @@ const Product = () => {
   return (
     <div>
         <h2>{product.name}</h2>
+        <img src={product.picture} alt={product.name} />
         <p>${product.price}</p>
         <p>{product.category}</p>
         <Link to={`/products/${product.seller._id}`}>by {product.seller.username}</Link>
