@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import Confetti from "react-confetti";
 import myApi from "../service/service";
@@ -41,15 +40,14 @@ const CreateProduct = ({getProducts, setShow}) => {
           <option disabled value="-1">
             Select a category
           </option>
-          <option value="bike">Bike</option>
-          <option value="equipment">Equipment</option>
-          <option value="other">Other</option>
+          <option value="bike">Bike 🚵‍♀️ </option>
+          <option value="equipment">Equipment 🛠️ </option>
+          <option value="other">Other 🧩</option>
         </select>
         <button>Create</button>
       </form>
     </div>
   );
-
 };
 
 export default CreateProduct;
