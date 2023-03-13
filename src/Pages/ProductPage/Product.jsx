@@ -15,7 +15,7 @@ const Product = () => {
         myApi.get(`/products/${id}`)
         .then((res) => {
           setProduct(res.data)
-          if(res.data.seller===user._id){
+          if(res.data.seller._id===user._id){
             setIsMine(true);
           }
         })

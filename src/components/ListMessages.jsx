@@ -26,7 +26,7 @@ const ListMessages = ({messages, getMessages}) => {
         <>
           <p>by {message.sendBy.username} to {message.sendTo.username}</p>
           <p>{message.product.name} : {message.content}</p>
-          {message.sendBy!==user._id &&
+          {message.sendBy._id!==user._id &&
             (!showFormCM? 
               <button onClick={()=> setShowFormCM(true)}>Respond</button>
             :

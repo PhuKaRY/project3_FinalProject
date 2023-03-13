@@ -13,7 +13,7 @@ const CreateMessage = ({productId, respond, callback}) => {
             const send= {
                 content: message,
                 product: productId,
-                users: [product.data.seller, user._id],
+                users: [product.data.seller._id, user._id],
                 sendBy: user._id,
                 sendTo: product.data.seller
             }
@@ -21,16 +21,16 @@ const CreateMessage = ({productId, respond, callback}) => {
             callback(false);
         }
         else {
-            const to='';
-            if(respond.users[0]._id===user._id){
-                to= respond.users[1]._id;
+            let to='';
+            if(respond.users[0]===user._id){
+                to= respond.users[1];
             }else {
-                to= respond.users[0]._id;
+                to= respond.users[0];
             }
             const send= {
                 content: message,
                 product: productId,
-                users: [respond.users[0]._id, respond.users[1]._id],
+                users: [respond.users[0], respond.users[1]],
                 sendBy: user._id,
                 sendTo: to,
             }
