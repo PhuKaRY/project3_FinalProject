@@ -38,8 +38,6 @@ const CreateMessage = ({productId, respond, callback}) => {
             callback();
         }
     }
-    if(user){
-    }
 
   return (
     <form onSubmit={handleSubmit}>

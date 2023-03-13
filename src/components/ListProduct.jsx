@@ -19,7 +19,7 @@ const ListProduct = ({products, deleteBtn, getProducts, getMessages}) => {
 
   return <div>
     {products.map((product) => {
-      return <>
+      return <div key={product._id}>
         <Link to={`/Product/${product._id}`} key={product._id}>
         <div style={{border:"1px solid black"}}>
         <h3>{product.name}</h3>
@@ -27,7 +27,7 @@ const ListProduct = ({products, deleteBtn, getProducts, getMessages}) => {
         </div>
         </Link>
         {deleteBtn && <button onClick={()=>handleDelete(product._id)}>Delete</button>}
-        </>
+        </div>
     })}
   </div>;
 };
