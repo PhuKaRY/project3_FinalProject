@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react'
 import { AuthContext } from '../../context/AuthContext';
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import myApi from '../../service/service';
 import CreateMessage from '../../components/CreateMessage';
 import ListMessages from '../../components/ListMessages';
@@ -13,6 +13,7 @@ const Product = () => {
   const [showFormCM, setShowFormCM] = useState(false);
   const {user} = useContext(AuthContext);
   const {id} = useParams();
+  const navigate= useNavigate();
 
   const getMessages= () => {
     myApi.get(`/messages/product/${id}`)
@@ -53,7 +54,12 @@ const Product = () => {
         <Link to={`/products/${product.seller._id}`}>by {product.seller.username}</Link>
         {!isMine &&
           ((!showFormCM)? 
-            <button onClick={()=> setShowFormCM(true)}>Contact Seller</button>
+            <button onClick={()=>{
+              if(!user){
+                navigate('/login');
+              }
+               setShowFormCM(true);
+              }}>Contact Seller</button>
           :
             <>
             <button onClick={()=> setShowFormCM(false)}>Unshow</button>

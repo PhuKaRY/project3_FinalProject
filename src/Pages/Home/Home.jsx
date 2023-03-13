@@ -32,10 +32,11 @@ const Home = () => {
       .then((res) => setProducts(res.data))
       .catch((e) => console.error(e));
   }, [query, filters]);
+
   let productToDisplay = products;
   if (query != "") {
     productToDisplay = products.filter((element) => {
-      console.log(element);
+      // console.log(element);
       return element.name.includes(query);
     });
   }
@@ -49,12 +50,12 @@ const Home = () => {
   return (
     <div>
       <h1>Name of the website</h1>
-      <div>button/field for the query</div>
       <div>
         <ListProduct
           products={productToDisplay}
           getProducts={getProducts}
           deleteBtn={false}
+          getMessages={null}
         />
       </div>
 

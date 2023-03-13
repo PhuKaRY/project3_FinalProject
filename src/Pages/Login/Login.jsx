@@ -20,8 +20,8 @@ const Login = () => {
       navigate("/Profile");
     } catch (error) {
       // console.error(error);
-      // console.error(error.response.data.message);
-      // setError(error.response.data.message);
+      console.error(error.response.data.message);
+      setError(error.response.data.message);
     }
   }
 
