@@ -2,17 +2,21 @@ import React, { useState } from "react";
 import Confetti from "react-confetti";
 import myApi from "../service/service";
 
-const CreateProduct = ({getProducts, setShow}) => {
+const CreateProduct = ({ getProducts, setShow }) => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [category, setCategory] = useState(-1);
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const producCreate = { name, price, category };
-    myApi.post("/products", producCreate)
-    .then((res)=> {setShow(false);getProducts()})
-    .catch((error) => console.log(error))
+    myApi
+      .post("/products", producCreate)
+      .then((res) => {
+        setShow(false);
+        getProducts();
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
