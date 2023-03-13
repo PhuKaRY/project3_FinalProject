@@ -51,6 +51,7 @@ const ListProduct = ({ products, deleteBtn, getProducts, getMessages }) => {
       </div> */}
     </div>
   );
+
 };
 
 export default ListProduct;

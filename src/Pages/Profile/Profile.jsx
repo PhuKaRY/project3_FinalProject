@@ -3,7 +3,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import myApi from "../../service/service";
 import CreateProduct from "../../components/CreateProduct";
-import CreateMessage from "../../components/CreateMessage";
 import ListProduct from "../../components/ListProduct";
 import ListMessages from "../../components/ListMessages";
 
@@ -24,7 +23,7 @@ const Profile = () => {
   }
   const getMessages = async () => {
     myApi.get('/messages')
-    .then((res)=> setMessages(res.data))
+    .then((res)=> setMessages(res.data.filter((message) => message.product)))
       .catch((error) => console.log(error))
   }
   useEffect(()=> {

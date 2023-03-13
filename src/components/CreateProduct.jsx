@@ -7,16 +7,27 @@ const CreateProduct = ({ getProducts, setShow }) => {
   const [price, setPrice] = useState(0);
   const [category, setCategory] = useState(-1);
 
+  const [picture, setPicture] = useState('');
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    const producCreate = { name, price, category };
-    myApi
-      .post("/products", producCreate)
-      .then((res) => {
-        setShow(false);
-        getProducts();
-      })
-      .catch((error) => console.log(error));
+    const formData = new FormData();
+    formData.append("picture", picture);
+    formData.append('name', name);
+    formData.append('price', `${price}`);
+    formData.append('category', `${category}`);
+    // const producCreate = {name, price, category};
+    console.log(formData)
+    myApi.post("/products",
+    formData
+    // ,
+    // {headers: 
+    // producCreate
+  // }
+    )
+    .then((res)=> {setShow(false);getProducts()})
+    .catch((error) => console.log(error))
+
   };
 
   return (
@@ -28,6 +39,8 @@ const CreateProduct = ({ getProducts, setShow }) => {
           type="string"
           value={name}
         />
+        <label htmlFor="picture">Picture</label>
+        <input type="file" name="picture" id="picture" onChange={(e) => setPicture(e.target.files[0])}/>
         <label htmlFor="price"></label>
         <input
           onChange={(e) => setPrice(e.target.value)}

@@ -34,11 +34,7 @@ function App() {
           <Route path="/Profile" element={<Profile />} />
           <Route path="/Product/:id" element={<Product />} />
           <Route path="/products/:userId" element={<ProductsOfSeller />} />
-          <Route path="/CreateProduct" element={<CreateProduct />} />
-          {/*<Route path="/Payment" element={<Payment />} />
-          // <Route path="/ShowAllMessage" element={<ShowAllMessage />} />
-          // <Route path="/ShowOneMessage" element={<ShowOneMessage />} />
-          // <Route path="/Basket" element={<Basket />} /> */}
+          
           <Route path="*" element={<Error />} />
         </Route>
       </Routes>

@@ -3,32 +3,46 @@ import { AuthContext } from '../../context/AuthContext';
 import { Link, useParams } from 'react-router-dom'
 import myApi from '../../service/service';
 import CreateMessage from '../../components/CreateMessage';
+import ListMessages from '../../components/ListMessages';
 
 const Product = () => {
   const [product, setProduct] = useState(null);
+  const [messages, setMessages] = useState(null);
+  const [queryUsers, setUsers] = useState('null');
   const [isMine, setIsMine]= useState(false);
   const [showFormCM, setShowFormCM] = useState(false);
   const {user} = useContext(AuthContext);
   const {id} = useParams();
 
-  useEffect(()=> {
-        myApi.get(`/products/${id}`)
+  const getMessages= () => {
+    myApi.get(`/messages/product/${id}`)
+        .then((res)=> setMessages(res.data))
+        .catch((error)=> console.log(error))
+  }
+
+  const getProduct= () => {
+    myApi.get(`/products/${id}`)
         .then((res) => {
           setProduct(res.data)
-          if(res.data.seller===user._id){
+          if(res.data.seller._id===user._id){
             setIsMine(true);
           }
         })
         .catch((error)=> console.log(error))
-  }, [user])
+  }
 
-  if(!product){
+  useEffect(()=> {
+        getProduct();
+        getMessages();
+  }, [user, id])
+
+  if(!product || !messages){
     return <p>Loading</p>
   }
-console.log(isMine)
   return (
     <div>
         <h2>{product.name}</h2>
+        <img src={product.picture} alt={product.name} />
         <p>${product.price}</p>
         <p>{product.category}</p>
         <Link to={`/products/${product.seller._id}`}>by {product.seller.username}</Link>
@@ -41,6 +55,7 @@ console.log(isMine)
             <CreateMessage respond={false} productId={id} callback={setShowFormCM}/>
             </>)
         }
+        <ListMessages messages={messages} getMessages={getMessages}/>
     </div>
   )
 }
