@@ -55,8 +55,7 @@ const Home = () => {
           <source src={Vdbr} type="video/mp4" />
         </video>
       </div>
-
-      <div>
+  <div style={{display:"flex", flexDirection:'column', alignItems:'center'}}>
         <input
           style={{ marginTop: "2px" }}
           type="search"
