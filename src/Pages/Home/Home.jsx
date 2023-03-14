@@ -55,10 +55,9 @@ const Home = () => {
           <source src={Vdbr} type="video/mp4" />
         </video>
       </div>
-      <h1>Bike Swap</h1>
-      <div style={{display:"flex", flexDirection:'column', alignItems:'center'}}>
+  <div style={{display:"flex", flexDirection:'column', alignItems:'center'}}>
         <input
-        
+          style={{ marginTop: "2px" }}
           type="search"
           value={query}
           onChange={(e) => setQuery(e.target.value)}

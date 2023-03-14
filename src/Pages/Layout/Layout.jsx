@@ -98,6 +98,7 @@ const Layout = () => {
             </div>
           </div>
         )}
+        <h1 style={{ paddingLeft: "40vw" }}>Bike Swap</h1>
         {/* <nav>
           <ul style={{ display: "flex", justifyContent: "space-evenly" }}>
             <li>
