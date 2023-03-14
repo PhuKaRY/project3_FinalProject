@@ -45,45 +45,69 @@ const Profile = () => {
   }
   // console.log(messages)
   return (
-    <div>
-      <div>
-      <img src={user.image} alt={user.username} style={{width:'5vw'}} />
-      <h1>Profile of {user.username}</h1>
-      {!showFormUpUser?
-        <button onClick={()=> setFormUpUser(true)}>Edit User</button>
-      :
-        <>
-          <button onClick={()=> setFormUpUser(false)}>Hide</button>
-          <EditUser user={user} authenticateUser={authenticateUser} />
-        </>
-      }
-      </div>
-        {!showFormCP?
+    <div style={{display: "flex", flexDirection:'column', alignItems: "center", justifyContent:"center"}}>
+      <div style={{display: "flex", flexDirection:'column', alignItems: "center"}}>
+        <div style={{display:'flex', margin:"2rem", alignItems: "center"}}>
+      <img src={user.image} alt={user.username} style={{width:'10vw', marginRight:'3vw'}} />
+      <h1>{user.username}</h1>
+        </div>
+      <div style={{display:'flex', justifyContent:"space-between", width:'80vw', marginBottom:'2rem'}}>
+      <div style={{width:'20vw', textAlign:"center"}}>
+      {!showFormCP?
             <button onClick={()=> setShowFormCP(true)}>Create A Product</button>
-          :
-            <>
-            <button onClick={()=> setShowFormCP(false)}>Hide</button>
-            <CreateProduct getProducts={getProducts} setShow={setShowFormCP}/>
-            </>
+        :
+        <button onClick={()=> setShowFormCP(false)}>Hide</button>
         }
-      <div>
+      </div>
+      <div style={{width:'20vw', textAlign:"center"}}>
         {!showProducts?
             <button onClick={()=> setShowProducts(true)}>Your Products</button>
           :
-            <>
-            <button onClick={()=> setShowProducts(false)}>Hide</button>
-            <ListProduct products={products} deleteBtn={true} getProducts={getProducts} getMessages={getMessages}/>
-            </>
+          <button onClick={()=> setShowProducts(false)}>Hide</button>
         }
       </div>
-      <div>
+      <div style={{width:'20vw', textAlign:"center"}}>
         {!showMessages?
             <button onClick={()=> setShowMessages(true)}>Your Messages</button>
           :
-            <>
             <button onClick={()=> setShowMessages(false)}>Hide</button>
+        }
+        </div>
+        <div style={{width:'20vw', textAlign:"center"}}>
+        {!showFormUpUser?
+        <button onClick={()=> setFormUpUser(true)}>Edit User</button>
+      :
+          <button onClick={()=> setFormUpUser(false)}>Hide</button>
+        }
+        </div>
+      </div>
+      </div>
+      <div style={{display:"flex", flexWrap:"wrap", gap:'4vw', justifyContent:'center'}}>
+      {showFormUpUser &&
+        <div style={{marginBottom:'5vh', border:'1px solid black', padding:'2rem'}}>
+          <h2>Update info</h2>
+          <EditUser user={user} authenticateUser={authenticateUser} setFormUpUser={setFormUpUser} />
+        </div>
+      }
+        {showFormCP &&
+            <div style={{marginBottom:'5vh', border:'1px solid black', padding:'2rem'}}>
+            <h2>Create A Product</h2>
+            <CreateProduct getProducts={getProducts} setShow={setShowFormCP}/>
+            </div>
+        }
+        </div>
+        <div style={{display:"flex", flexDirection:'column', gap:'4vw', justifyContent:'center'}}>
+        {showProducts &&
+            <div style={{marginBottom:'5vh', border:'1px solid black', padding:'2rem'}}>
+            <h2>Your Products</h2>
+            <ListProduct products={products} deleteBtn={true} getProducts={getProducts} getMessages={getMessages}/>
+            </div>
+        }
+        {showMessages &&
+            <div style={{marginBottom:'5vh', border:'1px solid black', padding:'2rem'}}>
+            <h2>Your Messages</h2>
             <ListMessages messages={messages} getMessages={getMessages}/>
-            </>
+            </div>
         }
       </div>
     </div>

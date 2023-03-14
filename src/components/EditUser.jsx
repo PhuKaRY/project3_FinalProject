@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import myApi from '../service/service'
 
-const EditUser = ({ user, authenticateUser }) => {
+const EditUser = ({ user, authenticateUser, setFormUpUser }) => {
     const [username, setUsername] = useState(user.username)
     const [image, setImage] = useState(user.image)
 
@@ -11,8 +11,8 @@ const handleSubmit= (event) => {
     formData.append('image', image);
     formData.append('username', username);
     myApi.patch('/auth/user', formData)
-    .then((res) => console.log(res))
     .then(res => authenticateUser())
+    .then(res=> setFormUpUser(false))
     .catch((error)=> console.error(error))
 }
 

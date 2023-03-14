@@ -36,7 +36,7 @@ const ProductsOfSeller = () => {
       }, [userId,query, filters])
 
       let productToDisplay = products;
-      console.log(productToDisplay)
+      // console.log(productToDisplay)
 
   if (query != "") {
     productToDisplay = products.filter((element) => {
@@ -65,7 +65,7 @@ const ProductsOfSeller = () => {
         />
         <fieldset>
           <legend>Filter by category</legend>
-          <div>
+          {/* <div> */}
             <label htmlFor="bike">Bike: </label>
             <input
               checked={filters.bike}
@@ -74,8 +74,8 @@ const ProductsOfSeller = () => {
               name="bike"
               id="bike"
             />
-          </div>
-          <div>
+          {/* </div> */}
+          {/* <div> */}
             <label htmlFor="equipment">Equipment: </label>
             <input
               checked={filters.equipment}
@@ -84,8 +84,8 @@ const ProductsOfSeller = () => {
               name="equipment"
               id="equipment"
             />
-          </div>
-          <div>
+          {/* </div> */}
+          {/* <div> */}
             <label htmlFor="other">Other: </label>
             <input
               checked={filters.other}
@@ -94,7 +94,7 @@ const ProductsOfSeller = () => {
               name="other"
               id="other"
             />
-          </div>
+          {/* </div> */}
         </fieldset>
       </div>
     <div>

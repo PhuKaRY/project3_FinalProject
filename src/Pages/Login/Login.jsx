@@ -26,6 +26,7 @@ const Login = () => {
   }
 
   return (
+    <div style={{display: "flex", flexDirection:'column', alignItems: "center", marginTop:'40vh'}}>
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="username">
@@ -52,6 +53,7 @@ const Login = () => {
       {error.length > 0 && <p className="error">{error}</p>}
       <button>Login</button>
     </form>
+    </div>
   );
 };
 
