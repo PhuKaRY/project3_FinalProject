@@ -40,7 +40,7 @@ const ShowProduct = ({ product, deleteBtn, getProducts, getMessages }) => {
       {deleteBtn && (
         <>
           <button onClick={() => handleDelete(product._id)}>Delete</button>
-          {!showEditForm ? (
+          {/* {!showEditForm ? (
             <button
               onClick={() => {
                 setEditForm(true);
@@ -63,7 +63,7 @@ const ShowProduct = ({ product, deleteBtn, getProducts, getMessages }) => {
                 showEdit={setEditForm}
               />
             </>
-          )}
+          )} */}
         </>
       )}
     </div>

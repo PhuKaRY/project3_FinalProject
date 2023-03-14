@@ -60,8 +60,8 @@ fieldset {
     justify-content: center;
     gap: 5vw;
     padding-bottom: 1vh;
-    background-color: black;
-    color: whitesmoke;
+    padding: 0 1vw;
+    width: 40vw;
 }
 
 form {

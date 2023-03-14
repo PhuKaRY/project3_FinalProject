@@ -21,7 +21,7 @@ const EditProduct = ({product, getProducts, showEdit}) => {
   }
 
   return (
-    <div>
+    <div style={{marginBottom:'2vh'}}>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name"></label>
         <input
