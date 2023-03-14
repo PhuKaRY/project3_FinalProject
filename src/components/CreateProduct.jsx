@@ -17,7 +17,7 @@ const CreateProduct = ({ getProducts, setShow }) => {
     formData.append('price', `${price}`);
     formData.append('category', `${category}`);
     // const producCreate = {name, price, category};
-    console.log(formData)
+    // console.log(formData)
     myApi.post("/products",
     formData
     // ,
