@@ -55,7 +55,7 @@ const Home = () => {
           <source src={Vdbr} type="video/mp4" />
         </video>
       </div>
-      <h1>Name of the website</h1>
+      <h1>Bike Swap</h1>
       <div>
         <input
           type="search"

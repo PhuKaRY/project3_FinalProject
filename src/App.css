@@ -43,11 +43,17 @@
 }
 
 header li {
-
   text-decoration: none;
   color: whitesmoke;
   margin-top: 5vh;
 }
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 
 fieldset {
   display: flex;
@@ -71,3 +77,4 @@ input, select {
   padding-left: 1vw;
   border: inherit
 }
+
