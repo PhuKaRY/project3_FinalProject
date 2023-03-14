@@ -5,6 +5,7 @@ import ListProduct from '../components/ListProduct';
 
 const ProductsOfSeller = () => {
     const [products, setProducts] = useState(null);
+    const [seller, setSeller] = useState(null);
     const {userId}= useParams();
     const [query, setQuery] = useState("");
   const [filters, setFilters] = useState({
@@ -13,11 +14,11 @@ const ProductsOfSeller = () => {
     other: false,
   });
 
-    const getProducts = async () => {
-        myApi.get(`/products/user/${userId}`)
-        .then((res)=> setProducts(res.data))
-          .catch((error) => console.log(error))
-      }
+    // const getProducts = async () => {
+    //     myApi.get(`/products/user/${userId}`)
+    //     .then((res)=> setProducts(res.data))
+    //       .catch((error) => console.log(error))
+    //   }
 
       useEffect(()=> {
         // getProducts();
@@ -31,6 +32,7 @@ const ProductsOfSeller = () => {
         .then((res)=> setProducts(res.data))
           .catch((error) => console.log(error))
 
+          myApi.get(`/auth/user/${userId}`).then(res => setSeller(res.data)).catch((error) => console.log(error))
       }, [userId,query, filters])
 
       let productToDisplay = products;
@@ -48,15 +50,12 @@ const ProductsOfSeller = () => {
     });
   };
 
-      if(!products){
+      if(!products || !seller){
         return <p>Loading</p>
       }
   return (
     <div>
-    <h1>{productToDisplay[0].seller.username}</h1>
-    <div>
-      <ListProduct products={productToDisplay} getProducts={getProducts} deleteBtn={false} getMessages={null}/>
-    </div>
+    <h1>{seller.username}</h1>
     <div>
         <input
           type="search"
@@ -98,6 +97,9 @@ const ProductsOfSeller = () => {
           </div>
         </fieldset>
       </div>
+    <div>
+      <ListProduct products={productToDisplay} getProducts={null} deleteBtn={false} getMessages={null}/>
+    </div>
   </div>
   )
 }
