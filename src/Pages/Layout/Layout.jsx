@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import logo from "../../pictures/logoBike.png";
 
 const Layout = () => {
   const { user, removeToken, authenticateUser } = useContext(AuthContext);
@@ -19,12 +20,29 @@ const Layout = () => {
           display: "flex",
           justifyContent: "flex-start",
           alignItems: "center",
-          backgroundColor: "black",
+          backgroundColor: "#f1b459",
           height: "8vh",
         }}
       >
         {!showMenu ? (
-          <button onClick={() => setMenu(true)}>=</button>
+          <picture
+            style={{
+              height: "60px",
+              width: "60px",
+              borderRadius: "50%",
+              overflow: "hidden",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <img
+              src={logo}
+              alt="logo"
+              style={{ height: "80px" }}
+              onClick={() => setMenu(true)}
+            />
+          </picture>
         ) : (
           <div
             style={{
@@ -42,7 +60,7 @@ const Layout = () => {
                 flexDirection: "column",
                 alignItems: "center",
                 height: "100vh",
-                backgroundColor: "black",
+                backgroundColor: "#f1b459",
                 width: "15vw",
               }}
             >
