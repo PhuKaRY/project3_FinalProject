@@ -34,6 +34,7 @@ const Layout = () => {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              marginLeft: '.6vw'
             }}
           >
             <img
