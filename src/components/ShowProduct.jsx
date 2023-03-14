@@ -30,7 +30,7 @@ const ShowProduct = ({ product, deleteBtn, getProducts, getMessages }) => {
         <img
           src={product.picture}
           alt={product.name}
-          style={{ width: "10vw" }}
+          style={{ maxWidth: "15vw", maxHeight: '30vh' }}
         />
         <h3>{product.name}</h3>
         <p>${product.price}</p>

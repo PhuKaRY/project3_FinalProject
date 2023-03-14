@@ -49,75 +49,11 @@ const Home = () => {
   };
 
   return (
-    <div>
       <div className="videobg">
         <video autoPlay loop muted>
           <source src={Vdbr} type="video/mp4" />
         </video>
       </div>
-  <div style={{display:"flex", flexDirection:'column', alignItems:'center'}}>
-        <input
-          style={{ marginTop: "2px" }}
-          type="search"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search products 🔎 "
-        />
-        <fieldset>
-          <legend>Filter by category</legend>
-          <div>
-            <label htmlFor="bike">Bike: </label>
-            <input
-              checked={filters.bike}
-              onChange={handleCheckBox}
-              type="checkbox"
-              name="bike"
-              id="bike"
-            />
-          </div>
-          <div>
-            <label htmlFor="equipment">Equipment: </label>
-            <input
-              checked={filters.equipment}
-              onChange={handleCheckBox}
-              type="checkbox"
-              name="equipment"
-              id="equipment"
-            />
-          </div>
-          <div>
-            <label htmlFor="other">Other: </label>
-            <input
-              checked={filters.other}
-              type="checkbox"
-              onChange={handleCheckBox}
-              name="other"
-              id="other"
-            />
-          </div>
-        </fieldset>
-      </div>
-      <div>
-        <ListProduct
-          products={productToDisplay}
-          getProducts={getProducts}
-          deleteBtn={false}
-          getMessages={null}
-        />
-      </div>
-      {/* get one product */}
-      {/* <legend>Search</legend> */}
-      {/* <div>
-        <label htmlFor="bike">bike: </label>
-        <input
-          checked={filters.bike}
-          onChange={handleSearch}
-          type="search"
-          name="bike"
-          id="bike"
-        />
-      </div> */}
-    </div>
   );
 };
 

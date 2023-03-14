@@ -9,6 +9,7 @@ const Layout = () => {
 
   // console.log(user);
   const handleClick = () => {
+    setMenu(false)
     removeToken();
     authenticateUser();
   };
@@ -34,6 +35,7 @@ const Layout = () => {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              marginLeft: '.6vw'
             }}
           >
             <img
@@ -77,22 +79,25 @@ const Layout = () => {
                 }}
               >
                 <li>
-                  <NavLink to={"/"}>Home</NavLink>
+                  <NavLink onClick={()=> setMenu(false)} to={"/"}>Home</NavLink>
+                </li>
+                <li>
+                  <NavLink onClick={()=> setMenu(false)} to={"/AllProducts"}>All Products</NavLink>
                 </li>
                 {!user ? (
                   <>
                     <li>
-                      <NavLink to={"/signup"}>Sign Up</NavLink>
+                      <NavLink onClick={()=> setMenu(false)} to={"/signup"}>Sign Up</NavLink>
                     </li>
                     <li>
-                      <NavLink to={"/login"}>Log In</NavLink>
+                      <NavLink onClick={()=> setMenu(false)} to={"/login"}>Log In</NavLink>
                     </li>
                   </>
                 ) : (
                   <>
                     <li onClick={handleClick}>Logout</li>
                     <li>
-                      <NavLink to={"/Profile"}>Profile</NavLink>
+                      <NavLink onClick={()=> setMenu(false)} to={"/Profile"}>Profile</NavLink>
                     </li>
                   </>
                 )}
