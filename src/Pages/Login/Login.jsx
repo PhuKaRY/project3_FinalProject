@@ -27,7 +27,6 @@ const Login = () => {
   }
 
   return (
-
     <>
       <form onSubmit={handleSubmit}>
         <div>
@@ -61,8 +60,8 @@ const Login = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          borderTopLeftRadius: "50%",
-          borderTopRightRadius: "50%",
+          borderRadius: "70%",
+
           height: "300px",
           width: "300px",
           marginTop: "50px",
@@ -71,7 +70,6 @@ const Login = () => {
         <img src={logo} />
       </picture>
     </>
-
   );
 };
 

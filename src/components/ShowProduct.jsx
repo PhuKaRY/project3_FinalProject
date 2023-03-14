@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import EditProduct from "./EditProduct";
@@ -7,7 +6,6 @@ import myApi from "../service/service";
 
 const ShowProduct = ({ product, deleteBtn, getProducts, getMessages }) => {
   const [showEditForm, setEditForm] = useState(false);
-
 
   const handleDelete = (id) => {
     myApi
@@ -69,6 +67,5 @@ const ShowProduct = ({ product, deleteBtn, getProducts, getMessages }) => {
     </div>
   );
 };
-
 
 export default ShowProduct;

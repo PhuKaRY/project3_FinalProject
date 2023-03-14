@@ -18,14 +18,14 @@ const About = () => {
         <div>
           <h2 style={{ color: "white", fontSize: "34px" }}>Cedric</h2>
           <img src={img23} alt="cedric" style={{ height: " 300px" }} />
-          <p style={{ color: "white", fontSize: "24px" }}>
+          <p style={{ color: "beige", fontSize: "24px" }}>
             Fullstack developer student at IronHack
           </p>
         </div>
         <div>
           <h2 style={{ color: "white", fontSize: "34px" }}>Phu</h2>
           <img src={img45} alt="phu" style={{ height: " 300px" }} />
-          <p style={{ color: "white", fontSize: "24px" }}>
+          <p style={{ color: "beige", fontSize: "24px" }}>
             Fullstack developer student at IronHack
           </p>
         </div>
