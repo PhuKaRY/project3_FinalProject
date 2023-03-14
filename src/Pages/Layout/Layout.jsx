@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import logo from "../../pictures/logoBike.png";
 
@@ -21,7 +21,7 @@ const Layout = () => {
           justifyContent: "flex-start",
           alignItems: "center",
           backgroundColor: "#f1b459",
-          height: "8vh",
+          height: "9vh",
         }}
       >
         {!showMenu ? (
@@ -72,27 +72,27 @@ const Layout = () => {
                 }}
               >
                 <li>
-                  <Link to={"/"}>Home</Link>
+                  <NavLink to={"/"}>Home</NavLink>
                 </li>
                 {!user ? (
                   <>
                     <li>
-                      <Link to={"/signup"}>Sign Up</Link>
+                      <NavLink to={"/signup"}>Sign Up</NavLink>
                     </li>
                     <li>
-                      <Link to={"/login"}>Log In</Link>
+                      <NavLink to={"/login"}>Log In</NavLink>
                     </li>
                   </>
                 ) : (
                   <>
                     <li onClick={handleClick}>Logout</li>
                     <li>
-                      <Link to={"/Profile"}>Profile</Link>
+                      <NavLink to={"/Profile"}>Profile</NavLink>
                     </li>
                   </>
                 )}
                 <li>
-                  <Link to={"/about"}>About Us</Link>
+                  <NavLink to={"/about"}>About Us</NavLink>
                 </li>
               </ul>
             </div>

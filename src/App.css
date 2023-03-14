@@ -78,3 +78,7 @@ select {
   padding-left: 1vw;
   border: inherit;
 }
+
+a.active {
+  color: red
+}
