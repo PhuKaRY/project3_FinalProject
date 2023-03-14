@@ -44,3 +44,8 @@
 .App {
   margin-top: 2%;
 }
+header li{
+  text-decoration: none;
+  color: whitesmoke;
+  margin-top: 5vh;
+ }

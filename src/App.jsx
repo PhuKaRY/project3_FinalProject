@@ -17,6 +17,7 @@ import Error from "./Pages/Error/Error";
 import Home from "./Pages/Home/Home";
 import { Route, Routes } from "react-router-dom";
 import ProductsOfSeller from "./Pages/ProductsOfSeller";
+import About from "./Pages/About";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -33,7 +34,7 @@ function App() {
           <Route path="/Profile" element={<Profile />} />
           <Route path="/Product/:id" element={<Product />} />
           <Route path="/products/:userId" element={<ProductsOfSeller />} />
-
+          <Route path="/about" element={<About />} />
           <Route path="*" element={<Error />} />
         </Route>
       </Routes>

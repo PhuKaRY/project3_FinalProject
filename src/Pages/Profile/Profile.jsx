@@ -5,9 +5,10 @@ import myApi from "../../service/service";
 import CreateProduct from "../../components/CreateProduct";
 import ListProduct from "../../components/ListProduct";
 import ListMessages from "../../components/ListMessages";
+import EditUser from "../../components/EditUser";
 
 const Profile = () => {
-  const { user } = useContext(AuthContext);
+  const { user, authenticateUser } = useContext(AuthContext);
 
   const [products, setProducts] = useState(null);
   const [messages, setMessages] = useState(null);
@@ -15,6 +16,7 @@ const Profile = () => {
   const [showFormCP, setShowFormCP] = useState(false);
   const [showProducts, setShowProducts] = useState(false);
   const [showMessages, setShowMessages] = useState(false);
+  const [showFormUpUser, setFormUpUser] = useState(false);
 
   const getProducts = async () => {
     myApi.get(`/products/user/${user._id}`)
@@ -44,7 +46,18 @@ const Profile = () => {
   // console.log(messages)
   return (
     <div>
+      <div>
+      <img src={user.image} alt={user.username} style={{width:'5vw'}} />
       <h1>Profile of {user.username}</h1>
+      {!showFormUpUser?
+        <button onClick={()=> setFormUpUser(true)}>Edit User</button>
+      :
+        <>
+          <button onClick={()=> setFormUpUser(false)}>Hide</button>
+          <EditUser user={user} authenticateUser={authenticateUser} />
+        </>
+      }
+      </div>
         {!showFormCP?
             <button onClick={()=> setShowFormCP(true)}>Create A Product</button>
           :
