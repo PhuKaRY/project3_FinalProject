@@ -4,11 +4,14 @@ import { Link, useParams, useNavigate } from 'react-router-dom'
 import myApi from '../../service/service';
 import CreateMessage from '../../components/CreateMessage';
 import ListMessages from '../../components/ListMessages';
+import EditProduct from '../../components/EditProduct';
+
 
 const Product = () => {
   const [product, setProduct] = useState(null);
   const [messages, setMessages] = useState(null);
-  const [queryUsers, setUsers] = useState('null');
+  const [showEditForm, setEditForm]= useState(false);
+
   const [isMine, setIsMine]= useState(false);
   const [showFormCM, setShowFormCM] = useState(false);
   const {user} = useContext(AuthContext);
@@ -37,6 +40,17 @@ const Product = () => {
     getMessages();
   }
 
+  const handleDelete = (id) => {
+    myApi
+      .delete(`/products/${id}`)
+      .then((res) => {
+        // getMessages();
+        // getProducts();
+        navigate('/Profile')
+      })
+      .catch((error) => console.log(error));
+  };
+
   useEffect(()=> {
         getProduct();
         getMessages();
@@ -52,8 +66,22 @@ const Product = () => {
         <p>${product.price}</p>
         <p>{product.category}</p>
         <Link to={`/products/${product.seller._id}`}>by {product.seller.username}</Link>
+        <div>
+
+         {isMine && 
+         ((!showEditForm)?
+         <>
+            <button onClick={()=>{setEditForm(true)}}>Update</button>
+            <button onClick={() => handleDelete(product._id)}>Delete</button>
+         </>
+            :
+            <>
+            <button onClick={()=>{setEditForm(false)}}>Hide</button>
+            <EditProduct product={product} getProducts={getProduct} showEdit={setEditForm}/>
+            <button onClick={() => handleDelete(product._id)}>Delete</button>
+            </>)}
         {!isMine &&
-          ((!showFormCM)? 
+            ((!showFormCM)? 
             <button onClick={()=>{
               if(!user){
                 navigate('/login');
@@ -66,6 +94,7 @@ const Product = () => {
             <CreateMessage respond={false} productId={id} callback={handleSend}/>
             </>)
         }
+        </div>
         <ListMessages messages={messages} getMessages={getMessages}/>
     </div>
   )

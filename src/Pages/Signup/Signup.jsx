@@ -38,6 +38,7 @@ const Signup = () => {
   }
 
   return (
+
     <>
       <form onSubmit={handleSubmit}>
         <div>
@@ -80,6 +81,7 @@ const Signup = () => {
         <img src={logo} />
       </picture>
     </>
+
   );
 };
 

@@ -27,6 +27,7 @@ const Login = () => {
   }
 
   return (
+
     <>
       <form onSubmit={handleSubmit}>
         <div>
@@ -70,6 +71,7 @@ const Login = () => {
         <img src={logo} />
       </picture>
     </>
+
   );
 };
 

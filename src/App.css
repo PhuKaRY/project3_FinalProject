@@ -47,8 +47,34 @@ header li {
   color: whitesmoke;
   margin-top: 5vh;
 }
+
 .App {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+
+fieldset {
+  display: flex;
+    justify-content: center;
+    gap: 5vw;
+    padding-bottom: 1vh;
+    background-color: black;
+    color: whitesmoke;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 30vw;
+  gap: 1.5vh;
+}
+
+input, select {
+  height: 5vh;
+  border-radius: 10px;
+  padding-left: 1vw;
+  border: inherit
+}
+
