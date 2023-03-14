@@ -3,6 +3,7 @@ import CreateMessage from './CreateMessage';
 
 const ShowMessage = ({message, user, getMessages}) => {
   const [showFormCM, setShowFormCM] = useState(false);
+  
 
   const handleSend= ()=> {
     getMessages();

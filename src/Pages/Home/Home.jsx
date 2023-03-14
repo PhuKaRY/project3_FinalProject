@@ -57,15 +57,6 @@ const Home = () => {
       </div>
       <h1>Name of the website</h1>
       <div>
-        <ListProduct
-          products={productToDisplay}
-          getProducts={getProducts}
-          deleteBtn={false}
-          getMessages={null}
-        />
-      </div>
-      {/* get one product */}
-      <div>
         <input
           type="search"
           value={query}
@@ -106,6 +97,15 @@ const Home = () => {
           </div>
         </fieldset>
       </div>
+      <div>
+        <ListProduct
+          products={productToDisplay}
+          getProducts={getProducts}
+          deleteBtn={false}
+          getMessages={null}
+        />
+      </div>
+      {/* get one product */}
       {/* <legend>Search</legend> */}
       {/* <div>
         <label htmlFor="bike">bike: </label>
