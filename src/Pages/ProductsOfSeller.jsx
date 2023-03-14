@@ -56,7 +56,7 @@ const ProductsOfSeller = () => {
   return (
     <div>
     <h1>{seller.username}</h1>
-    <div>
+    <div style={{display:"flex", flexDirection:'column', alignItems:'center'}}>
         <input
           type="search"
           value={query}
