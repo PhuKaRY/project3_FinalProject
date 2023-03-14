@@ -53,7 +53,12 @@ const Layout = () => {
               left: "0",
             }}
           >
-            <button onClick={() => setMenu(false)}>X</button>
+            <button
+              style={{ backgroundColor: "beige" }}
+              onClick={() => setMenu(false)}
+            >
+              X
+            </button>
             <div
               style={{
                 display: "flex",
@@ -99,28 +104,6 @@ const Layout = () => {
           </div>
         )}
         <h1 style={{ paddingLeft: "40vw" }}>Bike Swap</h1>
-        {/* <nav>
-          <ul style={{ display: "flex", justifyContent: "space-evenly" }}>
-            <li>
-              <a href="/">Home</a>
-            </li>
-            {!user ? (
-              <>
-                <li>
-                  <a href="/signup">Signup</a>
-                </li>
-                <li>
-                  <a href="/login">Login</a>
-                </li>
-              </>
-            ) : (
-              <>
-              <li onClick={handleClick}>Logout</li>
-              <li><a href="/Profile">Profile</a></li>
-              </>
-            )}
-          </ul>
-        </nav> */}
       </header>
       <Outlet />
     </>
