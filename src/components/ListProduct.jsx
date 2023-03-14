@@ -12,7 +12,7 @@ const ListProduct = ({ products, deleteBtn, getProducts, getMessages }) => {
   }
 
   return (
-    <div>
+    <div style={{display: 'flex',flexWrap:'wrap', padding:'4vh 4vw', gap:'3vw'}}>
       {products.map((product) => {
         return (
           <ShowProduct key={product._id} product={product} deleteBtn={deleteBtn} getProducts={getProducts} getMessages={getMessages}/>
