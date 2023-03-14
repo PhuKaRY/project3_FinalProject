@@ -68,3 +68,16 @@ button:focus-visible {
 :root {
   background-color: #5b6f57;
 }
+.videobg {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+.App {
+  color: #1a1a1a;
+}

@@ -3,7 +3,6 @@ import "./App.css";
 import Layout from "./Pages/Layout/Layout";
 import Signup from "./Pages/Signup/Signup";
 import Login from "./Pages/Login/Login";
-
 import ListProduct from "./components/ListProduct";
 import Profile from "./Pages/Profile/Profile";
 import Product from "./Pages/ProductPage/Product";
@@ -34,7 +33,7 @@ function App() {
           <Route path="/Profile" element={<Profile />} />
           <Route path="/Product/:id" element={<Product />} />
           <Route path="/products/:userId" element={<ProductsOfSeller />} />
-          
+
           <Route path="*" element={<Error />} />
         </Route>
       </Routes>
