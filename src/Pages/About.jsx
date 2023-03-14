@@ -5,7 +5,7 @@ import img45 from "../pictures/phu.png";
 const About = () => {
   return (
     <>
-      <h1>About Us</h1>
+      <h1 style={{ marginRight: "793px" }}>About Us</h1>
       <div
         style={{
           display: "flex",
@@ -16,16 +16,16 @@ const About = () => {
         }}
       >
         <div>
-          <h2>Cedric</h2>
+          <h2 style={{ color: "white", fontSize: "34px" }}>Cedric</h2>
           <img src={img23} alt="cedric" style={{ height: " 300px" }} />
-          <p style={{ color: "white" }}>
+          <p style={{ color: "white", fontSize: "24px" }}>
             Fullstack developer student at IronHack
           </p>
         </div>
         <div>
-          <h2>Phu</h2>
+          <h2 style={{ color: "white", fontSize: "34px" }}>Phu</h2>
           <img src={img45} alt="phu" style={{ height: " 300px" }} />
-          <p style={{ color: "white" }}>
+          <p style={{ color: "white", fontSize: "24px" }}>
             Fullstack developer student at IronHack
           </p>
         </div>

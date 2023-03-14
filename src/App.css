@@ -54,14 +54,13 @@ header li {
   align-items: center;
 }
 
-
 fieldset {
   display: flex;
-    justify-content: center;
-    gap: 5vw;
-    padding-bottom: 1vh;
-    background-color: black;
-    color: whitesmoke;
+  justify-content: center;
+  gap: 5vw;
+  padding-bottom: 1vh;
+  width: 40vw;
+  color: #49ae7e;
 }
 
 form {
@@ -71,10 +70,10 @@ form {
   gap: 1.5vh;
 }
 
-input, select {
+input,
+select {
   height: 5vh;
   border-radius: 10px;
   padding-left: 1vw;
-  border: inherit
+  border: inherit;
 }
-
