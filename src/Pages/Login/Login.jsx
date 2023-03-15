@@ -7,8 +7,12 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { storeToken, authenticateUser } = useContext(AuthContext);
+  const {user, storeToken, authenticateUser } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  if(user){
+    navigate('/Profile')
+  }
 
   async function handleSubmit(event) {
     event.preventDefault();
