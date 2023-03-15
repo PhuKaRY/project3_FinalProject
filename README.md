@@ -14,7 +14,6 @@ This website that connects people who want to swap their bikes and gear. We beli
 
 ## 🛠️ Install Dependencies
 
-```bash
 npm install package-name
 npm install axios
 
@@ -26,6 +25,4 @@ npm install axios
 -JavaScript
 -MongoDb
 
-[link](https://bikeswap.netlify.app/)
-
-```
+[Link to the website](https://bikeswap.netlify.app)
