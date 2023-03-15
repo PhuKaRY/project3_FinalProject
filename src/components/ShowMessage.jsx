@@ -4,20 +4,23 @@ import CreateMessage from './CreateMessage';
 const ShowMessage = ({message, user, getMessages}) => {
   const [showFormCM, setShowFormCM] = useState(false);
   const [isMine, setMine] = useState(false);
+
   useEffect(()=>{
     if(message.sendBy._id===user._id){
       setMine(true);
     }
   }, [user, message])
+
   const handleSend= ()=> {
     getMessages();
     setShowFormCM(false);
   }
+
   return (
     <>
-    {isMine?
-    
-    <div style={{display:'flex', justifyContent:'flex-end'}}>
+    {/* you message div */}
+    {isMine?   
+      <div style={{display:'flex', justifyContent:'flex-end'}}>
        <div style={{display:'flex', flexDirection:'column', backgroundColor:'#8eb8f7', borderRadius:'10px', maxWidth:'40vw', margin:'1vh'}}>
         <div style={{display:'flex', alignItems:'center', paddingRight:'1vw'}}>
           <div style={{display:'flex', alignItems:'center', paddingLeft:'1vw'}}>
@@ -35,8 +38,9 @@ const ShowMessage = ({message, user, getMessages}) => {
        </div>
       </div>
       :
+      // other user message div
       <>
-      <div style={{display:'flex', justifyContent:'flex-start'}}>
+    <div style={{display:'flex', justifyContent:'flex-start'}}>
       <div style={{display:'flex', flexDirection:'column', backgroundColor:'beige', borderRadius:'10px', maxWidth:'40vw', margin:'1vh'}}>
         <div style={{display:'flex', alignItems:'center', paddingLeft:'1vw'}}>
           <div style={{display:'flex', alignItems:'center', paddingRight:'1vw'}}>
@@ -61,7 +65,6 @@ const ShowMessage = ({message, user, getMessages}) => {
     </div>
       {showFormCM && 
               <div style={{display:'flex'}}>
-              {/* <button style={{fontSize:'inherit'}} onClick={()=> setShowFormCM(false)}>X</button> */}
               <CreateMessage respond={message} productId={message.product._id} callback={handleSend}/>
               </div>
       }

@@ -72,6 +72,7 @@ const ListMessages = ({messages, getMessages}) => {
     }
 
   return <div style={{marginTop:'2vh',marginBottom:'5vh'}}>
+    {/* query div */}
     <div style={{marginBottom:'2vh'}}>
       <select name="product" id="product" onChange={(e)=> setProducts(e.target.value)}>
           <option value='null'>All</option>
@@ -86,6 +87,7 @@ const ListMessages = ({messages, getMessages}) => {
         })}
       </select>
     </div>
+    {/* messages div */}
     <div style={{width:'50vw', border:'1px solid black'}}>
     {messagesToDisplay.map((message)=>{
         return <ShowMessage key={message._id} message={message} user={user} getMessages={getMessages}/>

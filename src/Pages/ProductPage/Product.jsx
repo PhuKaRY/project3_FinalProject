@@ -10,12 +10,16 @@ import EditProduct from '../../components/EditProduct';
 const Product = () => {
   const [product, setProduct] = useState(null);
   const [messages, setMessages] = useState(null);
-  const [showEditForm, setEditForm]= useState(false);
 
   const [isMine, setIsMine]= useState(false);
+
+  const [showEditForm, setEditForm]= useState(false);
   const [showFormCM, setShowFormCM] = useState(false);
+
   const {user} = useContext(AuthContext);
+
   const {id} = useParams();
+
   const navigate= useNavigate();
 
   const getMessages= () => {
@@ -44,8 +48,6 @@ const Product = () => {
     myApi
       .delete(`/products/${id}`)
       .then((res) => {
-        // getMessages();
-        // getProducts();
         navigate('/Profile')
       })
       .catch((error) => console.log(error));
@@ -59,6 +61,7 @@ const Product = () => {
   if(!product || !messages){
     return <p>Loading</p>
   }
+
   return (
     <div>
         <h2>{product.name}</h2>
@@ -95,6 +98,7 @@ const Product = () => {
             </>)
         }
         </div>
+        
         <h3>Messages about this product</h3>
         <ListMessages messages={messages} getMessages={getMessages}/>
     </div>

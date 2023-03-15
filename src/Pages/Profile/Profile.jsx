@@ -1,4 +1,3 @@
-
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import myApi from "../../service/service";
@@ -10,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const { user, authenticateUser } = useContext(AuthContext);
-  const navigate= useNavigate();
   const [products, setProducts] = useState(null);
   const [messages, setMessages] = useState(null);
   const [query, setQuery] = useState("");
@@ -24,6 +22,8 @@ const Profile = () => {
   const [showProducts, setShowProducts] = useState(false);
   const [showMessages, setShowMessages] = useState(false);
   const [showFormUpUser, setFormUpUser] = useState(false);
+  
+  const navigate= useNavigate();
 
   const getProducts = async () => {
     let queryString = "";
@@ -34,22 +34,30 @@ const Profile = () => {
     }
     myApi.get(`/products/user/${user._id}/?${queryString}`)
     .then((res)=> setProducts(res.data))
-      .catch((error) => console.log(error))
+    .catch((error) => console.log(error))
   }
+  
   const getMessages = async () => {
     myApi.get('/messages')
     .then((res)=> setMessages(res.data.filter((message) => message.product)))
-      .catch((error) => console.log(error))
+    .catch((error) => console.log(error))
   }
+
+  const handleCheckBox = (event) => {
+    setFilters((current) => {
+      return { ...current, [event.target.name]: event.target.checked };
+    });
+  };
+
   useEffect(()=> {
     if(!user){
       navigate('/login');
-    }
-    if(user){
+    }else {
       getProducts();
       getMessages();
     }
   }, [user, filters])
+
   if (!user) {
     return <p>loading user</p>;
   }
@@ -59,26 +67,25 @@ const Profile = () => {
   if (!messages) {
     return <p>loading messages</p>;
   }
+
   let productToDisplay = products;
   if (query != "") {
     productToDisplay = products.filter((element) => {
       return element.name.includes(query);
     });
   }
-  const handleCheckBox = (event) => {
-    setFilters((current) => {
-      return { ...current, [event.target.name]: event.target.checked };
-    });
-  };
+  
   return (
     <div style={{display: "flex", flexDirection:'column', alignItems: "center", justifyContent:"center"}}>
-
+      {/* block for title & button hide/show */}
       <div style={{display: "flex", flexDirection:'column', alignItems: "center"}}>
+        {/* Title div */}
         <div style={{display:'flex', margin:"2rem", alignItems: "center"}}>
         <img src={user.image} alt={user.username} style={{width:'10vw', marginRight:'3vw'}} />
         <h1>{user.username}</h1>
-      </div>
+        </div>
 
+      {/* button div */}
       <div style={{display:'flex', justifyContent:"space-between", width:'80vw', marginBottom:'2rem'}}>
         <div style={{width:'20vw', textAlign:"center"}}>
           {!showFormCP?
@@ -111,13 +118,16 @@ const Profile = () => {
         </div>
       </div>
 
+          {/* form div */}
       <div style={{display:"flex", flexWrap:"wrap", gap:'4vw', justifyContent:'center'}}>
+        {/* editUser form div */}
         {showFormUpUser &&
           <div style={{marginBottom:'5vh', border:'1px solid black', padding:'2rem'}}>
             <h2>Update info</h2>
             <EditUser user={user} authenticateUser={authenticateUser} setFormUpUser={setFormUpUser} />
           </div>
         }
+        {/* create product form div */}
         {showFormCP &&
             <div style={{marginBottom:'5vh', border:'1px solid black', padding:'2rem'}}>
             <h2>Create A Product</h2>
@@ -126,54 +136,52 @@ const Profile = () => {
         }
       </div>
 
+        {/* list div */}
       <div style={{display:"flex", flexDirection:'column', gap:'4vw', justifyContent:'center'}}>
+        {/* list product div */}
         {showProducts &&
             <div style={{marginBottom:'5vh'}}>
-            <h2>Your Products</h2>
-            <div style={{display:"flex", flexDirection:'column', alignItems:'center'}}>
-              <input
-                type="search"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search products 🔎 "
-              />
-              <fieldset>
-                <legend>Filter by category</legend>
-                {/* <div> */}
-                  <label htmlFor="bike">Bike: </label>
-                  <input
-                    checked={filters.bike}
-                    onChange={handleCheckBox}
-                    type="checkbox"
-                    name="bike"
-                    id="bike"
-                  />
-                {/* </div> */}
-                {/* <div> */}
-                  <label htmlFor="equipment">Equipment: </label>
-                  <input
-                    checked={filters.equipment}
-                    onChange={handleCheckBox}
-                    type="checkbox"
-                    name="equipment"
-                    id="equipment"
-                  />
-                {/* </div> */}
-                {/* <div> */}
-                  <label htmlFor="other">Other: </label>
-                  <input
-                    checked={filters.other}
-                    type="checkbox"
-                    onChange={handleCheckBox}
-                    name="other"
-                    id="other"
-                  />
-                {/* </div> */}
-              </fieldset>
-            </div>
-            <ListProduct products={productToDisplay} deleteBtn={true} getProducts={getProducts} getMessages={getMessages}/>
+              <h2>Your Products</h2>
+              {/* query div */}
+              <div style={{display:"flex", flexDirection:'column', alignItems:'center'}}>
+                <input
+                  type="search"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder="Search products 🔎 "
+                />
+                <fieldset>
+                  <legend>Filter by category</legend>
+                    <label htmlFor="bike">Bike: </label>
+                    <input
+                      checked={filters.bike}
+                      onChange={handleCheckBox}
+                      type="checkbox"
+                      name="bike"
+                      id="bike"
+                    />
+                    <label htmlFor="equipment">Equipment: </label>
+                    <input
+                      checked={filters.equipment}
+                      onChange={handleCheckBox}
+                      type="checkbox"
+                      name="equipment"
+                      id="equipment"
+                    />
+                    <label htmlFor="other">Other: </label>
+                    <input
+                      checked={filters.other}
+                      type="checkbox"
+                      onChange={handleCheckBox}
+                      name="other"
+                      id="other"
+                    />
+                </fieldset>
+              </div>
+              <ListProduct products={productToDisplay} deleteBtn={true} getProducts={getProducts} getMessages={getMessages}/>
             </div>
         }
+        {/* list message div */}
         {showMessages &&
             <div style={{marginBottom:'5vh'}}>
             <h2>Your Messages</h2>

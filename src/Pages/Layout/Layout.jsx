@@ -8,13 +8,13 @@ const Layout = () => {
   const [showMenu, setMenu] = useState(false);
   const navigate= useNavigate();
 
-  // console.log(user);
   const handleClick = () => {
     setMenu(false)
     removeToken();
     authenticateUser();
     navigate('/');
   };
+
   return (
     <>
       <header

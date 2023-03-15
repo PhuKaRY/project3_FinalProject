@@ -10,6 +10,7 @@ const CreateMessage = ({productId, respond, callback}) => {
         event.preventDefault();
         const product= await myApi.get(`/products/${productId}`)
         if(!respond){
+            // message send to a seller
             const send= {
                 content: message,
                 product: productId,
@@ -21,6 +22,7 @@ const CreateMessage = ({productId, respond, callback}) => {
             callback();
         }
         else {
+            // message send to an client
             let to='';
             if(respond.users[0]===user._id){
                 to= respond.users[1];
@@ -41,7 +43,6 @@ const CreateMessage = ({productId, respond, callback}) => {
 
   return (
     <form onSubmit={handleSubmit} style={{display:'flex', justifyContent:'space-evenly', alignItems:'center', flexDirection:'row', maxWidth:'none', gap:'0'}}>
-        {/* <label>Enter you message</label> */}
         <textarea name="message" value={message} id="message" style={{height:'10vh', width:'30vw', marginRight:'2vw'}} onChange={(event)=> setMessage(event.target.value)}></textarea>
         <button>Send</button>
     </form>

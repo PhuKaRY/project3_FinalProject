@@ -10,17 +10,8 @@ const AllProducts = () => {
     equipment: false,
     other: false,
   });
-  const getProducts = () => {
-    myApi
-      .get("/products")
-      .then((res) => setProducts(res.data))
-      .catch((error) => console.log(error));
-  };
 
-  // get one product
   useEffect(() => {
-    // getProducts();
-
     let queryString = "";
     for (const key in filters) {
       if (filters[key]) {
@@ -36,7 +27,6 @@ const AllProducts = () => {
   let productToDisplay = products;
   if (query != "") {
     productToDisplay = products.filter((element) => {
-      // console.log(element);
       return element.name.includes(query);
     });
   }
@@ -49,6 +39,7 @@ const AllProducts = () => {
 
   return (
     <div>
+      {/* query div */}
   <div style={{display:"flex", flexDirection:'column', alignItems:'center'}}>
         <input
           style={{ marginTop: "2px" }}
@@ -94,7 +85,7 @@ const AllProducts = () => {
       <div>
         <ListProduct
           products={productToDisplay}
-          getProducts={getProducts}
+          getProducts={null}
           deleteBtn={false}
           getMessages={null}
         />
