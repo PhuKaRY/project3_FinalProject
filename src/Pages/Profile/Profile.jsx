@@ -6,10 +6,11 @@ import CreateProduct from "../../components/CreateProduct";
 import ListProduct from "../../components/ListProduct";
 import ListMessages from "../../components/ListMessages";
 import EditUser from "../../components/EditUser";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const { user, authenticateUser } = useContext(AuthContext);
-
+  const navigate= useNavigate();
   const [products, setProducts] = useState(null);
   const [messages, setMessages] = useState(null);
   const [query, setQuery] = useState("");
@@ -41,6 +42,9 @@ const Profile = () => {
       .catch((error) => console.log(error))
   }
   useEffect(()=> {
+    if(!user){
+      navigate('/login');
+    }
     if(user){
       getProducts();
       getMessages();
