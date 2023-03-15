@@ -1,8 +1,3 @@
-[build]
-    command= 'npm run start'
-    publish= '/dist'
-    base='/'
-
 [[redirects]]
     from= '/*'
     to= '/index.html'
