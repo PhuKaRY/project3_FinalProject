@@ -58,7 +58,7 @@ const ShowMessage = ({message, user, getMessages}) => {
           <h5 style={{paddingRight:'1vw'}}>{message.content}</h5>
           {message.sendBy._id!==user._id &&
             !showFormCM?
-            <p style={{paddingRight:'1vw'}} onClick={()=> setShowFormCM(true)}>Respond</p>
+            <p style={{paddingRight:'1vw'}} onClick={()=> setShowFormCM(true)}>💬</p>
             :
             <p style={{paddingRight:'1vw'}} onClick={()=> setShowFormCM(false)}>x</p>
         }
