@@ -43,7 +43,7 @@ const CreateMessage = ({productId, respond, callback}) => {
 
   return (
     <form onSubmit={handleSubmit} style={{display:'flex', justifyContent:'space-evenly', alignItems:'center', flexDirection:'row', maxWidth:'none', gap:'0'}}>
-        <textarea name="message" value={message} id="message" style={{height:'10vh', width:'30vw', marginRight:'2vw'}} onChange={(event)=> setMessage(event.target.value)}></textarea>
+        <textarea name="message" placeholder='Enter you message' value={message} id="message" style={{height:'10vh', width:'30vw', marginRight:'2vw'}} onChange={(event)=> setMessage(event.target.value)}></textarea>
         <button>Send</button>
     </form>
   )

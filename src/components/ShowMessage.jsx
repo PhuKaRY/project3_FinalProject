@@ -21,7 +21,7 @@ const ShowMessage = ({message, user, getMessages}) => {
     {/* you message div */}
     {isMine?   
       <div style={{display:'flex', justifyContent:'flex-end'}}>
-       <div style={{display:'flex', flexDirection:'column', backgroundColor:'#8eb8f7', borderRadius:'10px', maxWidth:'40vw', margin:'1vh'}}>
+       <div style={{display:'flex', flexDirection:'column', backgroundColor:'#8eb8f7', borderRadius:'15px', maxWidth:'40vw', margin:'1vh'}}>
         <div style={{display:'flex', alignItems:'center', paddingRight:'1vw'}}>
           <div style={{display:'flex', alignItems:'center', paddingLeft:'1vw'}}>
            <img style={{height:'3vh'}} src={message.sendBy.image} alt={message.sendBy.username} />
@@ -41,7 +41,7 @@ const ShowMessage = ({message, user, getMessages}) => {
       // other user message div
       <>
     <div style={{display:'flex', justifyContent:'flex-start'}}>
-      <div style={{display:'flex', flexDirection:'column', backgroundColor:'beige', borderRadius:'10px', maxWidth:'40vw', margin:'1vh'}}>
+      <div style={{display:'flex', flexDirection:'column', backgroundColor:'beige', borderRadius:'15px', maxWidth:'40vw', margin:'1vh'}}>
         <div style={{display:'flex', alignItems:'center', paddingLeft:'1vw'}}>
           <div style={{display:'flex', alignItems:'center', paddingRight:'1vw'}}>
             <img style={{height:'3vh'}} src={message.sendBy.image} alt={message.sendBy.username} />

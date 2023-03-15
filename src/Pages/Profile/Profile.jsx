@@ -81,7 +81,9 @@ const Profile = () => {
       <div style={{display: "flex", flexDirection:'column', alignItems: "center"}}>
         {/* Title div */}
         <div style={{display:'flex', margin:"2rem", alignItems: "center"}}>
-        <img src={user.image} alt={user.username} style={{width:'10vw', marginRight:'3vw'}} />
+          <picture style={{width:'10vw', marginRight:'3vw', height:'10vw', borderRadius:'50%', overflow: "hidden", display:"flex", justifyContent:"center", alignItems:"center"}}>
+        <img src={user.image} alt={user.username} style={{height:'10vw'}} />
+          </picture>
         <h1>{user.username}</h1>
         </div>
 

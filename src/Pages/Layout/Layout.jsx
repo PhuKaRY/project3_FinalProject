@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Outlet, NavLink, useNavigate } from "react-router-dom";
+import { Outlet, NavLink, useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import logo from "../../pictures/logoBike.png";
 
@@ -110,7 +110,9 @@ const Layout = () => {
             </div>
           </div>
         )}
-        <h1 style={{ position:'absolute', left: "40vw" }}>Bike Swap</h1>
+        <Link className="title" to='/AllProducts' style={{position:'absolute', left: "40vw" }}>
+        <h1 style={{color:'black'}}>Bike Swap</h1>
+        </Link>
       </header>
       <Outlet />
     </>
