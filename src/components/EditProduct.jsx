@@ -56,7 +56,7 @@ const EditProduct = ({product, getProducts, showEdit}) => {
           <option value="equipment">Equipment 🛠️ </option>
           <option value="other">Other 🧩</option>
         </select>
-        <button>Create</button>
+        <button>Update</button>
       </form>
     </div>
   )
