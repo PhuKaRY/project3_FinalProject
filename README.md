@@ -26,6 +26,6 @@ npm install axios
 -JavaScript
 -MongoDb
 
-[Link to Our site](https://bikeswap.netlify.app/)
+[link](https://bikeswap.netlify.app/)
 
 ```
