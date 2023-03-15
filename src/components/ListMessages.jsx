@@ -71,8 +71,8 @@ const ListMessages = ({messages, getMessages}) => {
         return <p>No Messages</p>;
     }
 
-  return <div>
-    <div>
+  return <div style={{marginTop:'2vh',marginBottom:'5vh'}}>
+    <div style={{marginBottom:'2vh'}}>
       <select name="product" id="product" onChange={(e)=> setProducts(e.target.value)}>
           <option value='null'>All</option>
         {uniqueProd.map((product) => {
@@ -86,9 +86,11 @@ const ListMessages = ({messages, getMessages}) => {
         })}
       </select>
     </div>
+    <div style={{width:'50vw', border:'1px solid black'}}>
     {messagesToDisplay.map((message)=>{
         return <ShowMessage key={message._id} message={message} user={user} getMessages={getMessages}/>
     })}
+    </div>
   </div>
 
 }

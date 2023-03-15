@@ -77,8 +77,8 @@ const Product = () => {
             :
             <>
             <button onClick={()=>{setEditForm(false)}}>Hide</button>
-            <EditProduct product={product} getProducts={getProduct} showEdit={setEditForm}/>
             <button onClick={() => handleDelete(product._id)}>Delete</button>
+            <EditProduct product={product} getProducts={getProduct} showEdit={setEditForm}/>
             </>)}
         {!isMine &&
             ((!showFormCM)? 
@@ -95,6 +95,7 @@ const Product = () => {
             </>)
         }
         </div>
+        <h3>Messages about this product</h3>
         <ListMessages messages={messages} getMessages={getMessages}/>
     </div>
   )

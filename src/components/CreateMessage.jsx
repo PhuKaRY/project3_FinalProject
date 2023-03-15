@@ -40,9 +40,9 @@ const CreateMessage = ({productId, respond, callback}) => {
     }
 
   return (
-    <form onSubmit={handleSubmit}>
-        <label>Enter you message</label>
-        <textarea name="message" value={message} id="message" cols="30" rows="10" onChange={(event)=> setMessage(event.target.value)}></textarea>
+    <form onSubmit={handleSubmit} style={{display:'flex', justifyContent:'space-evenly', alignItems:'center', flexDirection:'row', maxWidth:'none', gap:'0'}}>
+        {/* <label>Enter you message</label> */}
+        <textarea name="message" value={message} id="message" style={{height:'10vh', width:'30vw', marginRight:'2vw'}} onChange={(event)=> setMessage(event.target.value)}></textarea>
         <button>Send</button>
     </form>
   )
