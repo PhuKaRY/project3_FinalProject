@@ -25,8 +25,9 @@ const ShowMessage = ({message, user, getMessages}) => {
         <div style={{display:'flex', alignItems:'center', paddingRight:'1vw'}}>
           <div style={{display:'flex', alignItems:'center', paddingLeft:'1vw'}}>
             <p>from</p> 
-           <img style={{height:'3vh'}} src={message.sendBy.image} alt={message.sendBy.username} />
-           <h6 style={{paddingLeft:'1vw', paddingRight:'1vw'}}>{message.sendBy.username}</h6> <p>for</p>
+           <img style={{height:'3vh', paddingLeft:'1vw'}} src={message.sendBy.image} alt={message.sendBy.username} />
+           <h6 style={{paddingRight:'1vw'}}>{message.sendBy.username}</h6> 
+           <p>for</p>
           </div>
           <div style={{display:'flex', alignItems:'center', paddingLeft:'1vw'}}>
             <img style={{height:'3vh'}} src={message.product.picture} alt={message.product.name} />
@@ -46,8 +47,8 @@ const ShowMessage = ({message, user, getMessages}) => {
         <div style={{display:'flex', alignItems:'center', paddingLeft:'1vw'}}>
           <div style={{display:'flex', alignItems:'center', paddingRight:'1vw'}}>
             <p>from</p> 
-            <img style={{height:'3vh'}} src={message.sendBy.image} alt={message.sendBy.username} />
-            <h6 style={{paddingLeft:'1vw', paddingRight:'1vw'}}>{message.sendBy.username}</h6> <p>for</p>
+            <img style={{height:'3vh', paddingLeft:'1vw'}} src={message.sendBy.image} alt={message.sendBy.username} />
+            <h6 style={{paddingRight:'1vw'}}>{message.sendBy.username}</h6> <p>for</p>
           </div>
           <div style={{display:'flex', alignItems:'center', paddingRight:'1vw'}}>
             <img style={{height:'3vh'}} src={message.product.picture} alt={message.product.name} />
@@ -58,9 +59,9 @@ const ShowMessage = ({message, user, getMessages}) => {
           <h5 style={{paddingRight:'1vw'}}>{message.content}</h5>
           {message.sendBy._id!==user._id &&
             !showFormCM?
-            <p style={{paddingRight:'1vw'}} onClick={()=> setShowFormCM(true)}>💬</p>
+            <p className='respond' style={{paddingRight:'1vw'}} onClick={()=> setShowFormCM(true)}>...💬</p>
             :
-            <p style={{paddingRight:'1vw'}} onClick={()=> setShowFormCM(false)}>x</p>
+            <p className='respond' style={{paddingRight:'1vw'}} onClick={()=> setShowFormCM(false)}>x</p>
         }
         </div>
       </div>
