@@ -26,11 +26,14 @@ const ShowProduct = ({ product, deleteBtn, getProducts, getMessages }) => {
       }}
     >
       <Link to={`/Product/${product._id}`}>
+        {/* <picture style={{overflow:"hidden", borderRadius:'10px', width:'15vw', height:'25vh' }}>
         <img
           src={product.picture}
           alt={product.name}
-          style={{ maxWidth: "15vw", maxHeight: '30vh', borderRadius:'10px' }}
+          // style={{size:'contain'}}
         />
+        </picture> */}
+        <div style={{backgroundImage:`url(${product.picture})`,backgroundPosition:'center', borderRadius:'10px', backgroundSize:'cover', width:'15vw', height:'15vw', marginBottom:'1vh'}}></div>
         <h3>{product.name}</h3>
         <p>${product.price}</p>
       </Link>
