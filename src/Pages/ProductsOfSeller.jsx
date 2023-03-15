@@ -14,48 +14,46 @@ const ProductsOfSeller = () => {
     other: false,
   });
 
-    // const getProducts = async () => {
-    //     myApi.get(`/products/user/${userId}`)
-    //     .then((res)=> setProducts(res.data))
-    //       .catch((error) => console.log(error))
-    //   }
-
-      useEffect(()=> {
-        // getProducts();
-        let queryString = "";
+  useEffect(()=> {
+    let queryString = "";
     for (const key in filters) {
       if (filters[key]) {
         queryString += `&category=${key}`;
       }
     }
+    // get products
     myApi.get(`/products/user/${userId}/?${queryString}`)
-        .then((res)=> setProducts(res.data))
-          .catch((error) => console.log(error))
+      .then((res)=> setProducts(res.data))
+      .catch((error) => console.log(error))
 
-          myApi.get(`/auth/user/${userId}`).then(res => setSeller(res.data)).catch((error) => console.log(error))
-      }, [userId,query, filters])
+    //  get messages 
+    myApi.get(`/auth/user/${userId}`).then(res => setSeller(res.data)).catch((error) => console.log(error))
+      
+  }, [userId,query, filters])
 
       let productToDisplay = products;
-      // console.log(productToDisplay)
 
   if (query != "") {
     productToDisplay = products.filter((element) => {
-      // console.log(element);
       return element.name.includes(query);
     });
   }
+
   const handleCheckBox = (event) => {
     setFilters((current) => {
       return { ...current, [event.target.name]: event.target.checked };
     });
   };
 
-      if(!products || !seller){
-        return <p>Loading</p>
-      }
+  if(!products || !seller){
+    return <p>Loading</p>
+  }
+
   return (
     <div>
+
     <h1>{seller.username}</h1>
+
     <div style={{display:"flex", flexDirection:'column', alignItems:'center'}}>
         <input
           type="search"
@@ -65,7 +63,6 @@ const ProductsOfSeller = () => {
         />
         <fieldset>
           <legend>Filter by category</legend>
-          {/* <div> */}
             <label htmlFor="bike">Bike: </label>
             <input
               checked={filters.bike}
@@ -74,8 +71,6 @@ const ProductsOfSeller = () => {
               name="bike"
               id="bike"
             />
-          {/* </div> */}
-          {/* <div> */}
             <label htmlFor="equipment">Equipment: </label>
             <input
               checked={filters.equipment}
@@ -84,8 +79,6 @@ const ProductsOfSeller = () => {
               name="equipment"
               id="equipment"
             />
-          {/* </div> */}
-          {/* <div> */}
             <label htmlFor="other">Other: </label>
             <input
               checked={filters.other}
@@ -94,9 +87,9 @@ const ProductsOfSeller = () => {
               name="other"
               id="other"
             />
-          {/* </div> */}
         </fieldset>
       </div>
+
     <div>
       <ListProduct products={productToDisplay} getProducts={null} deleteBtn={false} getMessages={null}/>
     </div>

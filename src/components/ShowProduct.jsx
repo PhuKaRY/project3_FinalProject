@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import EditProduct from "./EditProduct";
 
 import myApi from "../service/service";
 
 const ShowProduct = ({ product, deleteBtn, getProducts, getMessages }) => {
-  const [showEditForm, setEditForm] = useState(false);
-
   const handleDelete = (id) => {
     myApi
       .delete(`/products/${id}`)
@@ -16,6 +13,7 @@ const ShowProduct = ({ product, deleteBtn, getProducts, getMessages }) => {
       })
       .catch((error) => console.log(error));
   };
+
   return (
     <div
       style={{
@@ -24,13 +22,14 @@ const ShowProduct = ({ product, deleteBtn, getProducts, getMessages }) => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-end",
+        borderRadius:'10px'
       }}
     >
       <Link to={`/Product/${product._id}`}>
         <img
           src={product.picture}
           alt={product.name}
-          style={{ maxWidth: "15vw", maxHeight: '30vh' }}
+          style={{ maxWidth: "15vw", maxHeight: '30vh', borderRadius:'10px' }}
         />
         <h3>{product.name}</h3>
         <p>${product.price}</p>
@@ -38,30 +37,6 @@ const ShowProduct = ({ product, deleteBtn, getProducts, getMessages }) => {
       {deleteBtn && (
         <>
           <button onClick={() => handleDelete(product._id)}>Delete</button>
-          {/* {!showEditForm ? (
-            <button
-              onClick={() => {
-                setEditForm(true);
-              }}
-            >
-              Update
-            </button>
-          ) : (
-            <>
-              <button
-                onClick={() => {
-                  setEditForm(false);
-                }}
-              >
-                Hide
-              </button>
-              <EditProduct
-                product={product}
-                getProducts={getProducts}
-                showEdit={setEditForm}
-              />
-            </>
-          )} */}
         </>
       )}
     </div>

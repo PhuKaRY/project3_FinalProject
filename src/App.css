@@ -79,5 +79,5 @@ select {
 }
 
 a.active {
-  color: red
+  color: rgb(0, 0, 0)
 }

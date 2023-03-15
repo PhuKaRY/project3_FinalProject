@@ -10,12 +10,16 @@ import EditProduct from '../../components/EditProduct';
 const Product = () => {
   const [product, setProduct] = useState(null);
   const [messages, setMessages] = useState(null);
-  const [showEditForm, setEditForm]= useState(false);
 
   const [isMine, setIsMine]= useState(false);
+
+  const [showEditForm, setEditForm]= useState(false);
   const [showFormCM, setShowFormCM] = useState(false);
+
   const {user} = useContext(AuthContext);
+
   const {id} = useParams();
+
   const navigate= useNavigate();
 
   const getMessages= () => {
@@ -44,8 +48,6 @@ const Product = () => {
     myApi
       .delete(`/products/${id}`)
       .then((res) => {
-        // getMessages();
-        // getProducts();
         navigate('/Profile')
       })
       .catch((error) => console.log(error));
@@ -59,27 +61,31 @@ const Product = () => {
   if(!product || !messages){
     return <p>Loading</p>
   }
+
   return (
     <div>
+      <div style={{display:'flex', gap:'10vw', marginTop:'5vh', marginBottom:'3vh'}}>
+        <img src={product.picture} alt={product.name} style={{height:'50vh'}} />
+        <div style={{ display:'flex', flexDirection:'column', justifyContent: 'space-evenly'}}>
         <h2>{product.name}</h2>
-        <img src={product.picture} alt={product.name} style={{height:'30vh'}} />
-        <p>${product.price}</p>
-        <p>{product.category}</p>
-        <Link to={`/products/${product.seller._id}`}>by {product.seller.username}</Link>
-        <div>
+        <p style={{color:'grey', backgroundColor: 'beige', borderRadius:'10px'}}> price: ${product.price}</p>
+        <p style={{color: 'orange'}}>category: {product.category}</p>
+        <Link to={`/products/${product.seller._id}`}>added by {product.seller.username}</Link>
 
+        </div>
+      </div>
          {isMine && 
          ((!showEditForm)?
-         <>
+         <div>
             <button onClick={()=>{setEditForm(true)}}>Update</button>
             <button onClick={() => handleDelete(product._id)}>Delete</button>
-         </>
+         </div>
             :
-            <>
+            <div>
             <button onClick={()=>{setEditForm(false)}}>Hide</button>
             <button onClick={() => handleDelete(product._id)}>Delete</button>
             <EditProduct product={product} getProducts={getProduct} showEdit={setEditForm}/>
-            </>)}
+            </div>)}
         {!isMine &&
             ((!showFormCM)? 
             <button onClick={()=>{
@@ -89,14 +95,16 @@ const Product = () => {
                setShowFormCM(true);
               }}>Contact Seller</button>
           :
-            <>
+            <div>
             <button onClick={()=> setShowFormCM(false)}>Unshow</button>
             <CreateMessage respond={false} productId={id} callback={handleSend}/>
-            </>)
+            </div>)
         }
-        </div>
-        <h3>Messages about this product</h3>
-        <ListMessages messages={messages} getMessages={getMessages}/>
+        {user && 
+        <div>
+          <h3 style={{marginTop:'2vh', marginBottom:'2vh'}}>Messages about this product</h3>
+          <ListMessages messages={messages} getMessages={getMessages}/>
+        </div>}
     </div>
   )
 }

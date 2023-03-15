@@ -5,13 +5,9 @@ export const AuthContext = createContext();
 
 function AuthContextWrapper(props) {
   const [user, setUser] = useState(null);
-  // console.log(user);
-  //   const [token, setToken] = useState(null);
-  //   const [isLoading, setIsLoading] = useState(true);
 
   function storeToken(receivedToken) {
     localStorage.setItem("token", receivedToken);
-    // setToken(receivedToken);
   }
 
   function getToken() {
@@ -25,19 +21,15 @@ function AuthContextWrapper(props) {
   async function authenticateUser() {
     try {
       const currentToken = getToken();
-      //   setToken(currentToken);
       if (!currentToken) {
         setUser(null);
         return;
       }
       const response = await myApi.get("/auth/user");
-      //   console.log(response);
       setUser(response.data);
-      // setIsLoading(false);
     } catch (error) {
       console.log(error.message);
       setUser(null);
-      //   setIsLoading(false);
     }
   }
 

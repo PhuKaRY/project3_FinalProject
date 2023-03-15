@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import ShowProduct from "./ShowProduct";
 
 const ListProduct = ({ products, deleteBtn, getProducts, getMessages }) => {
-  //   console.log(products)
-
   if (!products) {
     return <p>Loading</p>;
   }
@@ -12,23 +10,12 @@ const ListProduct = ({ products, deleteBtn, getProducts, getMessages }) => {
   }
 
   return (
-    <div style={{display: 'flex',flexWrap:'wrap', padding:'4vh 4vw', gap:'3vw'}}>
+    <div style={{display: 'flex',flexWrap:'wrap', padding:'4vh 4vw', gap:'3vw', borderRadius:'10px'}}>
       {products.map((product) => {
         return (
           <ShowProduct key={product._id} product={product} deleteBtn={deleteBtn} getProducts={getProducts} getMessages={getMessages}/>
         );
       })}
-      {/* <div>
-        <legend>Filter by category</legend>
-        <label htmlFor="get one product"> Get One Product </label>
-        <input
-          checked={filters.name}
-          type="checkbox"
-          onChange={handleCheckBox}
-          name="name"
-          id="name"
-        />
-      </div> */}
     </div>
   );
 

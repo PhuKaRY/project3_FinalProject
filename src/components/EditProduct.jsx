@@ -9,19 +9,23 @@ const EditProduct = ({product, getProducts, showEdit}) => {
 
   const handleSubmit= (e)=> {
     e.preventDefault();
+
     const formData = new FormData();
     formData.append("picture", picture);
     formData.append('name', name);
     formData.append('price', `${price}`);
     formData.append('category', `${category}`);
+
     myApi.patch(`/products/${product._id}`, formData)
-    .then((res)=> getProducts())
+    .then((res)=>{
+      showEdit(false);
+      getProducts();
+    })
     .catch((error) => console.log(error))
-    showEdit(false)
   }
 
   return (
-    <div style={{marginBottom:'2vh'}}>
+    <div style={{marginBottom:'2vh', display:'flex', justifyContent:'center'}}>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name"></label>
         <input
@@ -35,6 +39,7 @@ const EditProduct = ({product, getProducts, showEdit}) => {
         <input
           onChange={(e) => setPrice(e.target.value)}
           type="number"
+          min='0'
           value={price}
         />
         <label htmlFor="Category"></label>

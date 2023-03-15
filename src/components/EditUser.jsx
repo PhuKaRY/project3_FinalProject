@@ -17,7 +17,7 @@ const handleSubmit= (event) => {
 }
 
   return (
-    <div>
+      <div>
         <form onSubmit={handleSubmit}>
             <label htmlFor="username">Username</label>
             <input type="text" name="username" id="username" value={username} onChange={(e)=> setUsername(e.target.value)}/>
@@ -26,7 +26,7 @@ const handleSubmit= (event) => {
             <input type="file" name="image" id="image" onChange={(e)=> setImage(e.target.files[0])}/>
             <button>Update</button>
         </form>
-    </div>
+      </div>
   )
 }
 
