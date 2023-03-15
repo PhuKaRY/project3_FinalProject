@@ -24,8 +24,9 @@ const ShowMessage = ({message, user, getMessages}) => {
        <div style={{display:'flex', flexDirection:'column', backgroundColor:'#8eb8f7', borderRadius:'15px', maxWidth:'40vw', margin:'1vh'}}>
         <div style={{display:'flex', alignItems:'center', paddingRight:'1vw'}}>
           <div style={{display:'flex', alignItems:'center', paddingLeft:'1vw'}}>
+            <p>from</p> 
            <img style={{height:'3vh'}} src={message.sendBy.image} alt={message.sendBy.username} />
-           <p>by</p> <h6 style={{paddingLeft:'1vw', paddingRight:'1vw'}}>{message.sendBy.username}</h6> <p>for</p>
+           <h6 style={{paddingLeft:'1vw', paddingRight:'1vw'}}>{message.sendBy.username}</h6> <p>for</p>
           </div>
           <div style={{display:'flex', alignItems:'center', paddingLeft:'1vw'}}>
             <img style={{height:'3vh'}} src={message.product.picture} alt={message.product.name} />
@@ -44,8 +45,9 @@ const ShowMessage = ({message, user, getMessages}) => {
       <div style={{display:'flex', flexDirection:'column', backgroundColor:'beige', borderRadius:'15px', maxWidth:'40vw', margin:'1vh'}}>
         <div style={{display:'flex', alignItems:'center', paddingLeft:'1vw'}}>
           <div style={{display:'flex', alignItems:'center', paddingRight:'1vw'}}>
+            <p>from</p> 
             <img style={{height:'3vh'}} src={message.sendBy.image} alt={message.sendBy.username} />
-            <p>by</p> <h6 style={{paddingLeft:'1vw', paddingRight:'1vw'}}>{message.sendBy.username}</h6> <p>for</p>
+            <h6 style={{paddingLeft:'1vw', paddingRight:'1vw'}}>{message.sendBy.username}</h6> <p>for</p>
           </div>
           <div style={{display:'flex', alignItems:'center', paddingRight:'1vw'}}>
             <img style={{height:'3vh'}} src={message.product.picture} alt={message.product.name} />

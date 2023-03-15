@@ -63,7 +63,7 @@ const Product = () => {
   }
 
   return (
-    <div>
+    <div style={{display:'flex', flexDirection:'column', justifyContent:'center'}}>
       <div style={{display:'flex', gap:'10vw', marginTop:'5vh', marginBottom:'3vh'}}>
         <img src={product.picture} alt={product.name} style={{height:'50vh'}} />
         <div style={{ display:'flex', flexDirection:'column', justifyContent: 'space-evenly'}}>
