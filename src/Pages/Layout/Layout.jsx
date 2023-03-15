@@ -1,17 +1,19 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import logo from "../../pictures/logoBike.png";
 
 const Layout = () => {
   const { user, removeToken, authenticateUser } = useContext(AuthContext);
   const [showMenu, setMenu] = useState(false);
+  const navigate= useNavigate();
 
   // console.log(user);
   const handleClick = () => {
     setMenu(false)
     removeToken();
     authenticateUser();
+    navigate('/');
   };
   return (
     <>
@@ -95,20 +97,20 @@ const Layout = () => {
                   </>
                 ) : (
                   <>
-                    <li onClick={handleClick}>Logout</li>
                     <li>
                       <NavLink onClick={()=> setMenu(false)} to={"/Profile"}>Profile</NavLink>
                     </li>
+                    <li onClick={handleClick}>Logout</li>
                   </>
                 )}
                 <li>
-                  <NavLink to={"/about"}>About Us</NavLink>
+                  <NavLink onClick={()=> setMenu(false)} to={"/about"}>About Us</NavLink>
                 </li>
               </ul>
             </div>
           </div>
         )}
-        <h1 style={{ paddingLeft: "40vw" }}>Bike Swap</h1>
+        <h1 style={{ position:'absolute', left: "40vw" }}>Bike Swap</h1>
       </header>
       <Outlet />
     </>
