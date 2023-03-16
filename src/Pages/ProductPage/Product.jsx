@@ -102,7 +102,7 @@ const Product = () => {
             <CreateMessage respond={false} productId={id} callback={handleSend}/>
             </div>)
         }
-        {user && 
+        {user && messages &&
         <div>
           <h3 style={{marginTop:'2vh', marginBottom:'2vh'}}>Messages about this product</h3>
           <ListMessages messages={messages} getMessages={getMessages}/>
