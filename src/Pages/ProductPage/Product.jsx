@@ -23,16 +23,18 @@ const Product = () => {
   const navigate= useNavigate();
 
   const getMessages= () => {
-    myApi.get(`/messages/product/${id}`)
-        .then((res)=> setMessages(res.data))
-        .catch((error)=> console.log(error))
+    if(user){
+      myApi.get(`/messages/product/${id}`)
+          .then((res)=> setMessages(res.data))
+          .catch((error)=> console.log(error))
+    }
   }
 
   const getProduct= () => {
     myApi.get(`/products/${id}`)
         .then((res) => {
           setProduct(res.data)
-          if(res.data.seller._id===user._id){
+          if(user && res.data.seller._id===user._id){
             setIsMine(true);
           }
         })
@@ -58,7 +60,7 @@ const Product = () => {
         getMessages();
   }, [user, id])
 
-  if(!product || !messages){
+  if(!product){
     return <p>Loading</p>
   }
 
