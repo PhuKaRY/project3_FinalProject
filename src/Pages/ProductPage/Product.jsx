@@ -58,6 +58,7 @@ const Product = () => {
   useEffect(()=> {
         getProduct();
         getMessages();
+        console.log(messages);
   }, [user, id])
 
   if(!product){
