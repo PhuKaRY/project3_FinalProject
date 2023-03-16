@@ -88,7 +88,7 @@ const ListMessages = ({messages, getMessages}) => {
       </select>
     </div>
     {/* messages div */}
-    <div style={{width:'50vw', border:'1px solid black', borderRadius:'10px'}}>
+    <div style={{width:'50vw',maxHeight:'50vh', overflowX:'hidden', overflowY:'scroll', border:'1px solid black', borderRadius:'10px'}}>
     {messagesToDisplay.map((message)=>{
         return <ShowMessage key={message._id} message={message} user={user} getMessages={getMessages}/>
     })}

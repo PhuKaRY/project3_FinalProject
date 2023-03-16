@@ -139,7 +139,7 @@ const Profile = () => {
       </div>
 
         {/* list div */}
-      <div style={{display:"flex", flexDirection:'column', gap:'4vw', justifyContent:'center'}}>
+      <div style={{display:"flex", flexDirection:'column', gap:'4vw', justifyContent:'center', alignItems:'center'}}>
         {/* list product div */}
         {showProducts &&
             <div style={{marginBottom:'5vh'}}>
